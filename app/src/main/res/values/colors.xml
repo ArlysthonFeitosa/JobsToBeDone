@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="DarkBlue">#1F3B4D</color>
+    <color name="DarkBlueVariant">#214761</color>
+    <color name="LightBlue">#D0FEFE</color>
+    <color name="TurquoiseBlue">#017274</color>
+    <color name="FABColor">#13BBAF</color>
+
 </resources>

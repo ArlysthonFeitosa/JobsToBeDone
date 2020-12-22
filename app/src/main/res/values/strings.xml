@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JobsToBeDone</string>
+    <string name="tasks">Tasks</string>
+    <string name="insights">Insights</string>
 </resources>
