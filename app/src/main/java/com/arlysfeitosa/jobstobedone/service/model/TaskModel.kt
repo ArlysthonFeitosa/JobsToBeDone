@@ -13,7 +13,7 @@ class TaskModel {
     var id: Int = 0
 
     @ColumnInfo(name = "task")
-    var task: Int = 0
+    var task: String = ""
 
     @ColumnInfo(name = "projectId")
     var projectId:Int = 0

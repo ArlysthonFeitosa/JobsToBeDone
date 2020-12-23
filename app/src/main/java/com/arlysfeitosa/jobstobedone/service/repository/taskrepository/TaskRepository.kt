@@ -9,7 +9,7 @@ class TaskRepository(context: Context) {
 
     private val mDataBase = TaskDataBase.getDataBase(context).taskDAO()
 
-    fun getProject(id: Int): TaskModel {
+    fun getTask(id: Int): TaskModel {
         return mDataBase.getTask(id)
     }
 
