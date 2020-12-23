@@ -3,6 +3,7 @@
 package com.arlysfeitosa.jobstobedone.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -40,6 +41,10 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.replace(R.id.fragment_container, selectedFragment).commit()
 
             true
+        }
+
+        fab.setOnClickListener {
+            startActivity(Intent(this, ChooseCreateActivity::class.java))
         }
     }
 }

@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobsToBeDone">
+        <activity android:name=".view.TaskFormActivity"></activity>
+        <activity android:name=".view.ProjectFormActivity" />
+        <activity android:name=".view.ChooseCreateActivity" />
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
