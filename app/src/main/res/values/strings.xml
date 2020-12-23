@@ -2,4 +2,15 @@
     <string name="app_name">JobsToBeDone</string>
     <string name="tasks">Tasks</string>
     <string name="insights">Insights</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="after">After</string>
+
+    <string-array name="spinner">
+        <item>Escola</item>
+        <item>Desenvolvimento</item>
+        <item>Inglês</item>
+    </string-array>
+
+
 </resources>
