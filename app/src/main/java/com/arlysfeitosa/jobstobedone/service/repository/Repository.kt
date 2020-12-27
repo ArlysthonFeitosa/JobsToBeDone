@@ -27,9 +27,6 @@ class Repository(context: Context) {
         mTaskDataBase.delete(task)
     }
 
-
-
-
     fun getProject(projectName:String): ProjectModel {
         return mProjectDataBase.getProject(projectName)
     }
@@ -49,4 +46,22 @@ class Repository(context: Context) {
     fun getAllProjects(): List<String>{
         return mProjectDataBase.getAllProjects()
     }
+
+    fun getTodayTasks(currentDate: String): List<TaskModel> {
+        return mTaskDataBase.getTodayTasks(currentDate)
+    }
+
+    fun getTomorrowTasks(currentDate: String) {
+
+    }
+
+    fun getAfterTasks(currentDate: String) {
+
+    }
+
+    fun getExpiredTasks(currentDate: String) {
+
+    }
+
+
 }

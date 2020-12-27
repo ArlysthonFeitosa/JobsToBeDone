@@ -12,8 +12,6 @@ class InsightsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, s: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_insights, container, false)
 
-
-
         return root
     }
 }

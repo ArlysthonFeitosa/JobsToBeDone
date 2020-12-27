@@ -18,4 +18,11 @@ interface TaskDAO {
 
     @Query("SELECT * FROM tasks WHERE id = :id")
     fun getTask(id: Int): TaskModel
+
+    @Query("SELECT * FROM tasks WHERE date = :date")
+    fun getTodayTasks(date: String): List<TaskModel>
+
+    @Query("SELECT * FROM tasks WHERE date = :date")
+    fun getTomorrowTasks(date: String): List<TaskModel>
+
 }
