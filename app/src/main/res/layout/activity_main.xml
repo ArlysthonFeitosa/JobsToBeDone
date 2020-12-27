@@ -8,11 +8,20 @@
     android:background="@color/DarkBlue"
     android:backgroundTint="@color/DarkBlue">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/TurquoiseBlue"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/LightBlue"
+        android:elevation="10dp"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="55dp" />
+        android:layout_marginBottom="55dp"
+        android:layout_marginTop="55dp"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"

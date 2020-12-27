@@ -55,6 +55,7 @@
                 android:text="@string/tomorrow"
                 android:textColor="@color/LightBlue"
                 android:textSize="35sp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycler_today" />
 
@@ -62,10 +63,11 @@
                 android:id="@+id/recycler_tomorrow"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_tomorrow"
-                tools:listitem="@layout/layout_task"/>
+                tools:listitem="@layout/layout_task" />
 
             <TextView
                 android:id="@+id/text_after"
@@ -74,6 +76,7 @@
                 android:text="@string/after"
                 android:textColor="@color/LightBlue"
                 android:textSize="35sp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycler_tomorrow" />
 
@@ -81,10 +84,11 @@
                 android:id="@+id/recycler_after"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_after"
-                tools:listitem="@layout/layout_task"/>
+                tools:listitem="@layout/layout_task" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
