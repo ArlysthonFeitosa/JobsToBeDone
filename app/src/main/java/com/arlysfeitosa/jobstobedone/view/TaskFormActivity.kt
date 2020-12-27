@@ -22,12 +22,14 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
 
     private lateinit var mViewModel: TaskFormViewModel
     private var mDateSelected = false
-    //private var mProjectNames: MutableList<String> = MutableList<String>
-    private val mDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+    private lateinit var mDateFormat: SimpleDateFormat
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_form)
+
+        mDateFormat = SimpleDateFormat(getString(R.string.date_format), Locale.ENGLISH)
 
         mViewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
         mViewModel.getAllProjects()
@@ -69,7 +71,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
         }
     }
 
-    fun toast(message: String) {
+    private fun toast(message: String) {
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
