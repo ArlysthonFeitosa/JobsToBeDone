@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/DarkBlue"
+    android:orientation="vertical"
+    android:padding="32dp"
     tools:context=".view.TaskFormActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/edit_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:drawableStart="@drawable/ic_tasks"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/LightBlue"
+        android:hint="@string/task"
+        android:inputType="text"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:textColor="@color/LightBlue"
+        android:textColorHint="@color/LightBlue" />
+
+    <Spinner
+        android:id="@+id/spinner_projects"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/edit_task"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:popupBackground="@drawable/shape_button"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/button_date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_projects"
+        android:text="@string/select_date_limit"
+        android:textColor="@color/DarkBlue" />
+
+    <Button
+        android:id="@+id/button_save_task"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_date_picker"
+        android:text="@string/create_task"
+        android:textColor="@color/DarkBlue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp" />
+
+</RelativeLayout>

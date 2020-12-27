@@ -2,6 +2,7 @@ package com.arlysfeitosa.jobstobedone.service.repository.projectrepository
 
 import androidx.room.*
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
+import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 
 @Dao
 interface ProjectDAO {
@@ -15,6 +16,9 @@ interface ProjectDAO {
     @Delete
     fun delete(project: ProjectModel)
 
-    @Query("SELECT * FROM projects WHERE id = :id")
-    fun getProject(id: Int): ProjectModel
+    @Query("SELECT * FROM projects WHERE project = :projectName")
+    fun getProject(projectName: String): ProjectModel
+
+    @Query("SELECT project FROM projects")
+    fun getAllProjects(): List<String>
 }

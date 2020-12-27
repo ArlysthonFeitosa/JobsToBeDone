@@ -7,10 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Projects")
 class ProjectModel {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var id: Int = 0
-
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "project")
     var project:String = ""
 

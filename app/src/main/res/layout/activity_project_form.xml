@@ -34,14 +34,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="400dp"
-        android:inputType="text"
-        android:maxLines="1"
         android:drawableStart="@drawable/ic_baseline_bookmark_border_24"
         android:drawablePadding="8dp"
         android:drawableTint="@color/LightBlue"
         android:hint="@string/project"
-        android:textColor="@color/LightBlue"
+        android:inputType="text"
         android:maxLength="20"
+        android:maxLines="1"
+        android:textColor="@color/LightBlue"
         android:textColorHint="@color/LightBlue" />
 
     <Button

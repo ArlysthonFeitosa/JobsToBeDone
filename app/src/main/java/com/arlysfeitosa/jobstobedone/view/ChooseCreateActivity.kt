@@ -21,6 +21,9 @@ class ChooseCreateActivity : AppCompatActivity(), View.OnClickListener {
         if(v.id == R.id.button_project){
             startActivity(Intent(this, ProjectFormActivity::class.java))
             finish()
+        }else if(v.id == R.id.button_task){
+            startActivity(Intent(this, TaskFormActivity::class.java))
+            finish()
         }
     }
 }

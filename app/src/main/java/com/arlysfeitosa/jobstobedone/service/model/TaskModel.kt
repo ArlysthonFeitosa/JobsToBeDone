@@ -15,12 +15,12 @@ class TaskModel {
     @ColumnInfo(name = "task")
     var task: String = ""
 
-    @ColumnInfo(name = "projectId")
-    var projectId:Int = 0
+    @ColumnInfo(name = "projectName")
+    var projectName: String = ""
 
     @ColumnInfo(name = "complete")
     var complete: Boolean = false
 
     @ColumnInfo(name = "date")
-    var date:String = "MM/dd/yyyy"
+    var date: String = "MM/dd/yyyy"
 }

@@ -5,12 +5,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
-import com.arlysfeitosa.jobstobedone.service.repository.projectrepository.ProjectRepository
+import com.arlysfeitosa.jobstobedone.service.repository.Repository
+import java.lang.Exception
 
-class ProjectFormViewModel(application: Application): AndroidViewModel(application)  {
+class ProjectFormViewModel(application: Application) : AndroidViewModel(application) {
 
     private val mContext = application.applicationContext
-    private var mProjectRepository:ProjectRepository = ProjectRepository(mContext)
+    private var mRepository: Repository = Repository(mContext)
 
     private var mSaveProject = MutableLiveData<Boolean>()
     val saveProject: LiveData<Boolean> = mSaveProject
@@ -18,16 +19,19 @@ class ProjectFormViewModel(application: Application): AndroidViewModel(applicati
     private var mProject = MutableLiveData<ProjectModel>()
     val project: LiveData<ProjectModel> = mProject
 
-    fun saveProject(projectName:String){
-        val project = ProjectModel().apply {
-            this.id = 0
-            this.project = projectName
-            this.tasksCount = 0
+    fun saveProject(projectName: String) {
+        try {
+            val project = ProjectModel().apply {
+                this.project = projectName
+                this.tasksCount = 0
+            }
+            mSaveProject.value = mRepository.saveProject(project)
+        } catch (e:Exception){
+            mSaveProject.value = false
         }
-        mSaveProject.value = mProjectRepository.save(project)
     }
 
-    fun load(id:Int){
-        mProject.value = mProjectRepository.getProject(id)
+    fun load(projectName: String) {
+        mProject.value = mRepository.getProject(projectName)
     }
 }

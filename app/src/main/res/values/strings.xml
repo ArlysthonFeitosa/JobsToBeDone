@@ -9,6 +9,11 @@
     <string name="create_project">Create Project</string>
     <string name="create_project_description">You can separate your tasks by your projects</string>
     <string name="create_project_example">Example: Gym, School, Work</string>
+    <string name="select_date_limit">Select Date Limit</string>
+    <string name="create_task">Create Task</string>
+    <string name="task">Task</string>
+    <string name="project_name_alert">You should insert the project name</string>
+    <string name="project_name_error">Something went wrong, try another project name.</string>
 
     <string-array name="spinner">
         <item>Escola</item>

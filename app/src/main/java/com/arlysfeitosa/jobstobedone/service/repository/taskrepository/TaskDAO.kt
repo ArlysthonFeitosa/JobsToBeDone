@@ -18,5 +18,4 @@ interface TaskDAO {
 
     @Query("SELECT * FROM tasks WHERE id = :id")
     fun getTask(id: Int): TaskModel
-
 }

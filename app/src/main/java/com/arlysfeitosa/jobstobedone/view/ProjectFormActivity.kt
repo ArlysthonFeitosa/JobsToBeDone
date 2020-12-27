@@ -20,20 +20,33 @@ class ProjectFormActivity : AppCompatActivity(), View.OnClickListener {
 
 
         mViewModel = ViewModelProvider(this).get(ProjectFormViewModel::class.java)
-
         button_save_project.setOnClickListener(this)
 
+        observe()
     }
 
     override fun onClick(v: View) {
-        if(v.id == R.id.button_save_project){
-            val projectName = edit_project.text.toString()
-            mViewModel.saveProject(projectName)
-            finish()
+        if (v.id == R.id.button_save_project) {
+            if(verifyData()){
+                val projectName = edit_project.text.toString()
+                mViewModel.saveProject(projectName)
+                finish()
+            }else{
+                Toast.makeText(this, getString(R.string.project_name_alert), Toast.LENGTH_LONG)
+            }
         }
     }
 
-    private fun observe(){
+
+    private fun verifyData(): Boolean {
+        return this.edit_project.text.toString() != ""
     }
 
+    private fun observe() {
+        mViewModel.saveProject.observe(this, Observer {
+            if(!it){
+                Toast.makeText(this, getString(R.string.project_name_error), Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }
