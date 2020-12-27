@@ -11,6 +11,7 @@
     android:id="@+id/card_task">
 
     <RelativeLayout
+        android:id="@+id/layout_itemTask"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/item_task_background"

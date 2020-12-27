@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">JobsToBeDone</string>
+
     <string name="tasks">Tasks</string>
     <string name="insights">Insights</string>
     <string name="today">Today</string>
@@ -8,7 +9,7 @@
     <string name="project">Project</string>
     <string name="create_project">Create Project</string>
     <string name="create_project_description">You can separate your tasks by your projects</string>
-    <string name="">Example: Gym, School, Work</string>
+    <string name="create_project_example">Example: Gym, School, Work</string>
     <string name="select_date_limit">Select Date Limit</string>
     <string name="create_task">Create Task</string>
     <string name="task">Task</string>
@@ -16,13 +17,5 @@
     <string name="project_name_error">Something went wrong, try another project name.</string>
     <string name="create_task_description">Create your tasks according to your projects.</string>
     <string name="date_format">MM/dd/yyyy</string>
-
-
-    <string-array name="spinner">
-        <item>Escola</item>
-        <item>Desenvolvimento</item>
-        <item>Inglês</item>
-    </string-array>
-
 
 </resources>

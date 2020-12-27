@@ -32,7 +32,6 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="2dp"
                 android:dropDownSelector="@color/DarkBlueVariant"
-                android:entries="@array/spinner"
                 android:popupBackground="@color/DarkBlueVariant"
                 app:layout_constraintBottom_toBottomOf="@+id/text_today"
                 app:layout_constraintEnd_toEndOf="parent"

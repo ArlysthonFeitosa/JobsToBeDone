@@ -26,19 +26,18 @@ class TodayTasksViewHolder(itemView: View, val listener: TaskListener) :
         this.mTaskTitle.text = task.task
         this.mTaskProject.text = task.projectName
         this.mTaskDateLimit.text = task.date
-        this.mTaskSwitchComplete.isEnabled = task.complete
+        this.mTaskSwitchComplete.isChecked = task.complete
 
         if (task.complete) {
             this.mCardView.setCardBackgroundColor(android.R.color.holo_green_dark)
         }
 
-        mTaskSwitchComplete.setOnClickListener {
-            if (task.complete) {
-                listener.onUndoClick(task.id)
-                this.mCardView.setCardBackgroundColor(R.color.DarkBlueVariant)
-            } else {
+        mTaskSwitchComplete.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
                 listener.onCompleteClick(task.id)
-                this.mCardView.setCardBackgroundColor(android.R.color.holo_green_dark)
+
+            } else {
+                listener.onUndoClick(task.id)
             }
         }
     }
