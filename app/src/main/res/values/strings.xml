@@ -17,5 +17,4 @@
     <string name="project_name_error">Something went wrong, try another project name.</string>
     <string name="create_task_description">Create your tasks according to your projects.</string>
     <string name="date_format">MM/dd/yyyy</string>
-
 </resources>

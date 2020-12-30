@@ -21,7 +21,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
     private lateinit var mViewModel: TaskFormViewModel
-    private var mDateSelected = false
+    private var mDateSelected = true
     private lateinit var mDateFormat: SimpleDateFormat
 
 

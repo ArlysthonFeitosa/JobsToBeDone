@@ -6,24 +6,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arlysfeitosa.jobstobedone.R
 import com.arlysfeitosa.jobstobedone.service.listener.TaskListener
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
-import com.arlysfeitosa.jobstobedone.view.viewholder.TodayTasksViewHolder
+import com.arlysfeitosa.jobstobedone.view.viewholder.TasksViewHolder
 
-class TodayTasksAdapter:RecyclerView.Adapter<TodayTasksViewHolder>() {
+class TasksAdapter:RecyclerView.Adapter<TasksViewHolder>() {
 
     private var mList: List<TaskModel> = arrayListOf()
     private lateinit var mListener: TaskListener
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayTasksViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {
         val item = LayoutInflater.from(parent.context).inflate(R.layout.layout_task, parent, false)
-        return TodayTasksViewHolder(item, mListener)
+        return TasksViewHolder(item, mListener)
     }
 
     override fun getItemCount(): Int {
         return mList.count()
     }
 
-    override fun onBindViewHolder(holder: TodayTasksViewHolder, position: Int) {
-        holder.bindData(mList[position])
+    override fun onBindViewHolder(holderToday: TasksViewHolder, position: Int) {
+        holderToday.bindData(mList[position])
     }
 
     fun attachListener(listener:TaskListener){

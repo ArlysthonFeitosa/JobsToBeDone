@@ -32,7 +32,7 @@
         android:drawableTint="@color/LightBlue"
         android:hint="@string/task"
         android:inputType="text"
-        android:maxLength="20"
+        android:maxLength="25"
         android:maxLines="1"
         android:textColor="@color/LightBlue"
         android:textColorHint="@color/LightBlue" />
@@ -44,7 +44,7 @@
         android:layout_below="@+id/edit_task"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:popupBackground="@drawable/shape_button"
+        android:popupBackground="@drawable/shape_spinner_background"
         android:textAlignment="center" />
 
     <Button
@@ -53,7 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner_projects"
         android:text="@string/select_date_limit"
-        android:textColor="@color/DarkBlue" />
+        android:textColor="@color/DarkBlue"
+        android:background="@drawable/ripple_button" />
 
     <Button
         android:id="@+id/button_save_task"
@@ -62,6 +63,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/create_task"
-        android:textColor="@color/DarkBlue" />
+        android:textColor="@color/DarkBlue"
+        android:background="@drawable/ripple_button"/>
 
 </RelativeLayout>

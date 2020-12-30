@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">2BeDone</string>
+
+    <string name="tasks">Tarefas</string>
+    <string name="insights">Insights</string>
+    <string name="today">Hoje</string>
+    <string name="tomorrow">Amanhã</string>
+    <string name="after">Depois</string>
+    <string name="project">Projeto</string>
+    <string name="create_project">Criar Projeto</string>
+    <string name="create_project_description">Você pode separar suas tarefas de acordo com os seus projetos.</string>
+    <string name="create_project_example">Exemplo: Academia, Escola, Trabalho.</string>
+    <string name="select_date_limit">Selecionar Data de Entrega</string>
+    <string name="create_task">Criar Tarefa</string>
+    <string name="task">Tarefa</string>
+    <string name="project_name_alert">Você deve inserir o nome do projeto.</string>
+    <string name="project_name_error">Algo deu errado, tente outro nome de projeto.</string>
+    <string name="create_task_description">Crie suas tarefas de acordo com o projeto.</string>
+    <string name="date_format">dd/MM/yyyy</string>
+</resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,90 +8,84 @@
     android:background="@color/DarkBlue"
     android:backgroundTint="@color/DarkBlue">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+        <TextView
+            android:id="@+id/text_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/today"
+            android:textColor="@color/LightBlue"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/text_today"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/today"
-                android:textColor="@color/LightBlue"
-                android:textSize="35sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/spinner_projects"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:dropDownSelector="@color/DarkBlueVariant"
+            android:popupBackground="@color/DarkBlueVariant"
+            app:layout_constraintBottom_toBottomOf="@+id/text_today"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_today" />
 
-            <Spinner
-                android:id="@+id/spinner_projects"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="2dp"
-                android:dropDownSelector="@color/DarkBlueVariant"
-                android:popupBackground="@color/DarkBlueVariant"
-                app:layout_constraintBottom_toBottomOf="@+id/text_today"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/text_today" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_today"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_today"
+            tools:listitem="@layout/layout_task" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_today"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_today"
-                tools:listitem="@layout/layout_task" />
+        <TextView
+            android:id="@+id/text_tomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/tomorrow"
+            android:textColor="@color/LightBlue"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_today" />
 
-            <TextView
-                android:id="@+id/text_tomorrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tomorrow"
-                android:textColor="@color/LightBlue"
-                android:textSize="35sp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler_today" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_tomorrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_tomorrow"
+            tools:listitem="@layout/layout_task" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_tomorrow"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_tomorrow"
-                tools:listitem="@layout/layout_task" />
+        <TextView
+            android:id="@+id/text_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/after"
+            android:textColor="@color/LightBlue"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_tomorrow" />
 
-            <TextView
-                android:id="@+id/text_after"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/after"
-                android:textColor="@color/LightBlue"
-                android:textSize="35sp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler_tomorrow" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_after"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_after"
+            tools:listitem="@layout/layout_task" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_after"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_after"
-                tools:listitem="@layout/layout_task" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-</RelativeLayout>
+</ScrollView>

@@ -5,6 +5,8 @@ import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.projectrepository.ProjectDataBase
 import com.arlysfeitosa.jobstobedone.service.repository.taskrepository.TaskDataBase
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Repository(context: Context) {
 
@@ -27,7 +29,7 @@ class Repository(context: Context) {
         mTaskDataBase.delete(task)
     }
 
-    fun getProject(projectName:String): ProjectModel {
+    fun getProject(projectName: String): ProjectModel {
         return mProjectDataBase.getProject(projectName)
     }
 
@@ -43,7 +45,7 @@ class Repository(context: Context) {
         mProjectDataBase.delete(project)
     }
 
-    fun getAllProjects(): List<String>{
+    fun getAllProjects(): List<String> {
         return mProjectDataBase.getAllProjects()
     }
 
@@ -51,8 +53,16 @@ class Repository(context: Context) {
         return mTaskDataBase.getTodayTasks(currentDate)
     }
 
-    fun getTomorrowTasks(currentDate: String) {
+    fun getTomorrowTasks(dateFormat: String): List<TaskModel> {
 
+        val calendar = Calendar.getInstance()
+        calendar.time = Date()
+        calendar.add(Calendar.DAY_OF_MONTH, 1)
+
+        val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
+        val tomorrowDate = dateFormater.format(calendar.time)
+
+        return mTaskDataBase.getTomorrowTasks(tomorrowDate)
     }
 
     fun getAfterTasks(currentDate: String) {
@@ -62,6 +72,4 @@ class Repository(context: Context) {
     fun getExpiredTasks(currentDate: String) {
 
     }
-
-
 }

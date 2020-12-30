@@ -38,6 +38,10 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
         mTask.value = mRepository.getTask(id)
     }
 
+    fun refreshTasks(){
+
+    }
+
     fun getAllProjects(){
         mAllProjects.value =  mRepository.getAllProjects()
     }
