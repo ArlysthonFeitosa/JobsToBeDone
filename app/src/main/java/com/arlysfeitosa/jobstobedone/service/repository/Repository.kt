@@ -25,7 +25,8 @@ class Repository(context: Context) {
         return mTaskDataBase.update(task) > 0
     }
 
-    fun deleteTask(task: TaskModel) {
+    fun deleteTask(id:Int) {
+        val task = mTaskDataBase.getTask(id)
         mTaskDataBase.delete(task)
     }
 

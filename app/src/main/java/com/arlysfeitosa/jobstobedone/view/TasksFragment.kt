@@ -1,7 +1,10 @@
 package com.arlysfeitosa.jobstobedone.view
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +18,8 @@ import com.arlysfeitosa.jobstobedone.view.adapter.TasksAdapter
 import com.arlysfeitosa.jobstobedone.viewmodel.TasksViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.stream.DoubleStream.builder
+import java.util.stream.IntStream.builder
 
 class TasksFragment() : Fragment() {
 
@@ -75,13 +80,27 @@ class TasksFragment() : Fragment() {
             override fun onUndoClick(id: Int) {
                 mViewModel.undo(id)
             }
+
+            override fun onDeleteClick(id: Int) {
+
+                val alert = AlertDialog.Builder(context)
+                alert.setTitle(getString(R.string.alert_delete_title))
+                alert.setMessage(getString(R.string.alert_delete_message))
+                alert.setPositiveButton(getString(R.string.alert_delete_positive)) { _, _ ->
+                    mViewModel.deleteTask(id)
+                    mViewModel.load()
+                }
+                alert.setNeutralButton(getString(R.string.alert_delete_negative), null)
+                alert.show()
+
+            }
         }
     }
 
 
     override fun onResume() {
         super.onResume()
-        mViewModel.refreshTasks()
+        mViewModel.load()
     }
 
 

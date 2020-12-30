@@ -1,6 +1,8 @@
 package com.arlysfeitosa.jobstobedone.view.viewholder
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.provider.Settings.Global.getString
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.Switch
@@ -20,10 +22,10 @@ class TasksViewHolder(itemView: View, val listener: TaskListener) :
     private var mTaskDateLimit: TextView = itemView.findViewById(R.id.text_date)
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private var mTaskSwitchComplete: Switch = itemView.findViewById(R.id.switch_complete)
-    private var mLayoutItem:RelativeLayout = itemView.findViewById(R.id.layout_itemTask)
+    private var mCardView:CardView = itemView.findViewById(R.id.card_task)
+    private var mLayout:RelativeLayout = itemView.findViewById(R.id.layout_itemTask)
 
 
-    @SuppressLint("ResourceAsColor")
     fun bindData(task: TaskModel) {
 
         this.mTaskTitle.text = task.task
@@ -31,12 +33,22 @@ class TasksViewHolder(itemView: View, val listener: TaskListener) :
         this.mTaskDateLimit.text = task.date
         this.mTaskSwitchComplete.isChecked = task.complete
 
-        mTaskSwitchComplete.setOnCheckedChangeListener { buttonView, isChecked ->
+
+        mTaskSwitchComplete.setOnCheckedChangeListener{ buttonView, isChecked ->
             if (isChecked) {
                 listener.onCompleteClick(task.id)
-            } else {
-                listener.onUndoClick(task.id)
+            } else if(isChecked == false) {
+                if(task.complete == true){
+                    listener.onUndoClick(task.id)
+                }
             }
+        }
+
+        itemView.setOnLongClickListener{
+
+            listener.onUndoClick(task.id)
+            listener.onDeleteClick(task.id)
+            true
         }
     }
 }

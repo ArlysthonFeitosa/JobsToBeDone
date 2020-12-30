@@ -17,4 +17,9 @@
     <string name="project_name_error">Algo deu errado, tente outro nome de projeto.</string>
     <string name="create_task_description">Crie suas tarefas de acordo com o projeto.</string>
     <string name="date_format">dd/MM/yyyy</string>
+    <string name="alert_delete_title">Deletar Tarefa?</string>
+    <string name="alert_delete_message">Você deseja deletar a tarefa?</string>
+    <string name="alert_delete_positive">Deletar</string>
+    <string name="alert_delete_negative">Cancelar</string>
+
 </resources>

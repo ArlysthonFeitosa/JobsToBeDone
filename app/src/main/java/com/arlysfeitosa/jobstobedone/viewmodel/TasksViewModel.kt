@@ -33,11 +33,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     val expiredTasks: LiveData<List<TaskModel>> = mExpiredTasks
 
     private var currentDate: String = "00/00/0000"
-
     var dateFomat:String = "MM/dd/yyyy"
-
-    //LocalDate datetime = LocalDate.parse(txt_Data_Abertura.getText(), DateTimeFormatter.ofPattern(“dd/MM/yyyy”))
-    //String newstring = datetime.format(DateTimeFormatter.ofPattern(“dd/MM/yyyy”))
 
     fun attachDateFormat(dateFomatString: String){
         this.dateFomat = dateFomatString
@@ -47,17 +43,21 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         this.currentDate = currentDate
     }
 
+    fun deleteTask(id:Int){
+        mRepository.deleteTask(id)
+    }
+
+    fun load(){
+        mTodayTasks.value = mRepository.getTodayTasks(this.currentDate)
+        mTomorrowTasks.value = mRepository.getTomorrowTasks(dateFomat)
+    }
+
     fun getTask(id: Int): TaskModel {
         return mRepository.getTask(id)
     }
 
     fun getProject(projectName: String): ProjectModel {
         return mRepository.getProject(projectName)
-    }
-
-    fun refreshTasks() {
-        mTodayTasks.value = mRepository.getTodayTasks(this.currentDate)
-        mTomorrowTasks.value = mRepository.getTomorrowTasks(dateFomat)
     }
 
     fun getTodayTasks() {
@@ -92,12 +92,11 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
         if (complete) {
             project.tasksCount++
-        } else {
+        } else if (project.tasksCount != 0){
             project.tasksCount--
         }
 
         mRepository.updateTask(task)
         mRepository.updateProject(project)
-        refreshTasks()
     }
 }
