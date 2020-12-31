@@ -7,8 +7,9 @@
     <string name="tomorrow">Amanhã</string>
     <string name="after">Depois</string>
     <string name="project">Projeto</string>
-    <string name="create_project">Criar Projeto</string>
-    <string name="create_project_description">Você pode separar suas tarefas de acordo com os seus projetos.</string>
+    <string name="projects">Projetos</string>
+    <string name="create">Create</string>
+    <string name="create_project_description">Você pode separar suas tarefas entre seus projetos.</string>
     <string name="create_project_example">Exemplo: Academia, Escola, Trabalho.</string>
     <string name="select_date_limit">Selecionar Data de Entrega</string>
     <string name="create_task">Criar Tarefa</string>
@@ -21,7 +22,6 @@
     <string name="alert_delete_message">Você deseja deletar a tarefa?</string>
     <string name="alert_delete_positive">Deletar</string>
     <string name="alert_delete_negative">Cancelar</string>
-    <string name="delete_project">Deletar Projeto</string>
     <string name="have_to_create_project">Antes de criar tarefas, você deve criar algum projeto.</string>
 
 </resources>

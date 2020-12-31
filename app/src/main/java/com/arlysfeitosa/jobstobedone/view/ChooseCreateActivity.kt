@@ -22,7 +22,6 @@ class ChooseCreateActivity : AppCompatActivity(), View.OnClickListener {
 
         button_project.setOnClickListener(this)
         button_task.setOnClickListener(this)
-        button_delete_project.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -36,9 +35,6 @@ class ChooseCreateActivity : AppCompatActivity(), View.OnClickListener {
             }else{
                 Toast.makeText(this, getString(R.string.have_to_create_project), Toast.LENGTH_LONG).show()
             }
-        } else if (v.id == R.id.button_delete_project) {
-            startActivity(Intent(this, DeleteProjectActivity::class.java))
-            finish()
         }
     }
 }

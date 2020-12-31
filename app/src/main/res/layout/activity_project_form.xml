@@ -1,65 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/DarkBlue"
-    android:orientation="vertical"
-    android:padding="32dp"
+    android:padding="16dp"
+    android:paddingTop="16dp"
     tools:context=".view.ProjectFormActivity">
 
-    <TextView
-        android:id="@+id/text_title_form"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="64dp"
-        android:text="@string/create_project_description"
-        android:textAlignment="center"
-        android:textColor="@color/LightBlue"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/text_form_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_title_form"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="64dp"
-        android:text="@string/create_project_example"
-        android:textAlignment="center"
-        android:textColor="@color/LightBlue"
-        android:textSize="16sp" />
-
-    <EditText
-        android:id="@+id/edit_project"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_form_description"
-        android:layout_marginBottom="400dp"
-        android:drawableStart="@drawable/ic_baseline_bookmark_border_24"
-        android:drawablePadding="8dp"
-        android:drawableTint="@color/LightBlue"
-        android:hint="@string/project"
-        android:inputType="text"
-        android:maxLength="20"
-        android:maxLines="1"
-        android:textColor="@color/LightBlue"
-        android:textColorHint="@color/LightBlue" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_save_project"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:background="@drawable/shape_button"
-        android:text="@string/create_project"
-        android:textColor="@color/DarkBlue" />
+        <TextView
+            android:id="@+id/text_title_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="@string/create_project_description"
+            android:textAlignment="center"
+            android:textColor="@color/LightBlue"
+            android:textSize="16sp" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/text_form_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_title_form"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:text="@string/create_project_example"
+            android:textAlignment="center"
+            android:textColor="@color/LightBlue"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/edit_project"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/text_form_description"
+            android:layout_alignParentStart="true"
+            android:drawableStart="@drawable/ic_baseline_bookmark_border_24"
+            android:drawablePadding="8dp"
+            android:drawableTint="@color/LightBlue"
+            android:hint="@string/project"
+            android:inputType="text"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:textColor="@color/LightBlue"
+            android:textColorHint="@color/LightBlue" />
+
+        <Button
+            android:id="@+id/button_save_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/edit_project"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/edit_project"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/edit_project"
+            android:layout_toRightOf="@id/edit_project"
+            android:background="@drawable/shape_button"
+            android:text="@string/create"
+            android:textColor="@color/DarkBlue" />
+
+        <View
+            android:id="@+id/view_split"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/edit_project"
+            android:layout_marginTop="16dp"
+            android:background="@color/LightBlue"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_split"
+            android:layout_marginTop="16dp"
+            tools:listitem="@layout/layout_project"/>
+
+    </RelativeLayout>
+
+</ScrollView>
