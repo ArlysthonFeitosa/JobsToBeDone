@@ -26,41 +26,36 @@ class TasksViewHolder(itemView: View, val listener: TaskListener) :
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private var mCompleteIcon: Switch = itemView.findViewById(R.id.switch_complete)
-    //private lateinit var call:
-
+    private var mTaskId: Int = 0
 
     fun bindData(task: TaskModel) {
-
         this.mTaskTitle.text = task.task
         this.mTaskProject.text = task.projectName
         this.mTaskDateLimit.text = task.date
-
         this.mCompleteIcon.isChecked = task.complete
-
+        this.mTaskId = task.id
 
         mCompleteIcon.setOnCheckedChangeListener { buttonView, isChecked ->
-            synchronized(this){
+            synchronized(this) {
                 if (isChecked) {
-                    val a = task.id
                     if (task.complete == false) {
                         listener.onCompleteClick(task.id)
-                    }else{
+                    } else {
                         mCompleteIcon.isChecked = true
                     }
 
                 } else if (!isChecked) {
                     if (task.complete == true) {
                         listener.onUndoClick(task.id)
-                    }else{
+                    } else {
                         mCompleteIcon.isChecked = false
                     }
                 }
             }
         }
 
-
         itemView.setOnLongClickListener {
-            synchronized(this){
+            synchronized(this) {
                 listener.onDeleteClick(task.id)
                 true
             }

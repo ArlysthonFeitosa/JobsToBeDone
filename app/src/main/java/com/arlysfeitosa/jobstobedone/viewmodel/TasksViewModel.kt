@@ -1,19 +1,13 @@
 package com.arlysfeitosa.jobstobedone.viewmodel
 
 import android.app.Application
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.arlysfeitosa.jobstobedone.R
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.Repository
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
+import kotlinx.coroutines.delay
 
 class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -86,19 +80,19 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
     //On click complete/undo
     private fun updateStatus(taskId: Int, complete: Boolean) {
-        val task: TaskModel = getTask(taskId)
-        task.complete = complete
+            val task: TaskModel = getTask(taskId)
+            task.complete = complete
 
-        val project: ProjectModel = getProject(task.projectName)
+            val project: ProjectModel = getProject(task.projectName)
 
-        if (complete) {
-            project.tasksCount++
-        } else if (project.tasksCount != 0){
-            project.tasksCount--
+            if (complete) {
+                project.tasksCount++
+            } else if (project.tasksCount != 0){
+                project.tasksCount--
+            }
+            mRepository.updateTask(task)
+            mRepository.updateProject(project)
+            load()
         }
 
-        mRepository.updateTask(task)
-        mRepository.updateProject(project)
-        load()
-    }
 }

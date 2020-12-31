@@ -30,7 +30,6 @@ class TasksFragment() : Fragment() {
     private lateinit var dateFormater: SimpleDateFormat
     private lateinit var root: View
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, s: Bundle?): View? {
         root = inflater.inflate(R.layout.fragment_tasks, container, false)
 
@@ -46,7 +45,6 @@ class TasksFragment() : Fragment() {
         formatRecycler() //Format Recyclers
         observer()
         mViewModel.load() //Load Tasks
-
 
         return root
     }
@@ -87,7 +85,10 @@ class TasksFragment() : Fragment() {
                 alert.setTitle(getString(R.string.alert_delete_title))
                 alert.setMessage(getString(R.string.alert_delete_message))
                 alert.setPositiveButton(getString(R.string.alert_delete_positive)) { _, _ ->
-                    mViewModel.undo(id)
+                    val task = mViewModel.getTask(id)
+                    if(task.complete){
+                        mViewModel.undo(id)
+                    }
                     mViewModel.deleteTask(id)
                     mViewModel.load()
                 }
@@ -97,19 +98,19 @@ class TasksFragment() : Fragment() {
         }
     }
 
-
     override fun onResume() {
         super.onResume()
         mViewModel.load()
     }
 
-
     private fun observer() {
         mViewModel.todayTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             mTodayTaskAdapter.updateListener(it)
+            mTodayTaskAdapter.notifyDataSetChanged()
         })
         mViewModel.tomorrowTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             mTomorrowTasksAdapter.updateListener(it)
+            mTomorrowTasksAdapter.notifyDataSetChanged()
         })
     }
 }

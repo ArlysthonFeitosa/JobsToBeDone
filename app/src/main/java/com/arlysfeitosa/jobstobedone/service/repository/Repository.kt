@@ -11,8 +11,6 @@ import java.util.*
 
 class Repository (context: Context) {
 
-
-
     private val mTaskDataBase = TaskDataBase.getDataBase(context).taskDAO()
     private val mProjectDataBase = ProjectDataBase.getDataBase(context).projectDAO()
 
@@ -58,7 +56,6 @@ class Repository (context: Context) {
     }
 
     fun getTomorrowTasks(dateFormat: String): List<TaskModel> {
-
         val calendar = Calendar.getInstance()
         calendar.time = Date()
         calendar.add(Calendar.DAY_OF_MONTH, 1)
