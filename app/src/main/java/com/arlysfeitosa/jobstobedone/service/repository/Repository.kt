@@ -14,6 +14,12 @@ class Repository (context: Context) {
     private val mTaskDataBase = TaskDataBase.getDataBase(context).taskDAO()
     private val mProjectDataBase = ProjectDataBase.getDataBase(context).projectDAO()
 
+    fun checkExistsProjects():Boolean{
+        var allProjects:List<String>?  = mProjectDataBase.getAllProjectNames()
+
+        return !allProjects.isNullOrEmpty()
+    }
+
     fun getTask(id: Int): TaskModel {
         return mTaskDataBase.getTask(id)
     }
@@ -48,7 +54,7 @@ class Repository (context: Context) {
     }
 
     fun getAllProjects(): List<String> {
-        return mProjectDataBase.getAllProjects()
+        return mProjectDataBase.getAllProjectNames()
     }
 
     fun getTodayTasks(currentDate: String): List<TaskModel> {
