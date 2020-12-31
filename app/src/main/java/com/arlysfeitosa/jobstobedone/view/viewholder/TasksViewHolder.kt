@@ -2,8 +2,11 @@ package com.arlysfeitosa.jobstobedone.view.viewholder
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.VoiceInteractor
+import android.media.MediaCodec
 import android.provider.Settings.Global.getString
 import android.view.View
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Switch
 import android.widget.TextView
@@ -20,10 +23,10 @@ class TasksViewHolder(itemView: View, val listener: TaskListener) :
     private var mTaskTitle: TextView = itemView.findViewById(R.id.text_task)
     private var mTaskProject: TextView = itemView.findViewById(R.id.text_taskProject)
     private var mTaskDateLimit: TextView = itemView.findViewById(R.id.text_date)
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private var mTaskSwitchComplete: Switch = itemView.findViewById(R.id.switch_complete)
-    private var mCardView:CardView = itemView.findViewById(R.id.card_task)
-    private var mLayout:RelativeLayout = itemView.findViewById(R.id.layout_itemTask)
+    private var mCompleteIcon: Switch = itemView.findViewById(R.id.switch_complete)
+    //private lateinit var call:
 
 
     fun bindData(task: TaskModel) {
@@ -31,24 +34,36 @@ class TasksViewHolder(itemView: View, val listener: TaskListener) :
         this.mTaskTitle.text = task.task
         this.mTaskProject.text = task.projectName
         this.mTaskDateLimit.text = task.date
-        this.mTaskSwitchComplete.isChecked = task.complete
+
+        this.mCompleteIcon.isChecked = task.complete
 
 
-        mTaskSwitchComplete.setOnCheckedChangeListener{ buttonView, isChecked ->
-            if (isChecked) {
-                listener.onCompleteClick(task.id)
-            } else if(isChecked == false) {
-                if(task.complete == true){
-                    listener.onUndoClick(task.id)
+        mCompleteIcon.setOnCheckedChangeListener { buttonView, isChecked ->
+            synchronized(this){
+                if (isChecked) {
+                    val a = task.id
+                    if (task.complete == false) {
+                        listener.onCompleteClick(task.id)
+                    }else{
+                        mCompleteIcon.isChecked = true
+                    }
+
+                } else if (!isChecked) {
+                    if (task.complete == true) {
+                        listener.onUndoClick(task.id)
+                    }else{
+                        mCompleteIcon.isChecked = false
+                    }
                 }
             }
         }
 
-        itemView.setOnLongClickListener{
 
-            listener.onUndoClick(task.id)
-            listener.onDeleteClick(task.id)
-            true
+        itemView.setOnLongClickListener {
+            synchronized(this){
+                listener.onDeleteClick(task.id)
+                true
+            }
         }
     }
 }

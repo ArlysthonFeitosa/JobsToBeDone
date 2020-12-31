@@ -1,6 +1,7 @@
 package com.arlysfeitosa.jobstobedone.service.repository
 
 import android.content.Context
+import androidx.room.Room
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.projectrepository.ProjectDataBase
@@ -8,7 +9,9 @@ import com.arlysfeitosa.jobstobedone.service.repository.taskrepository.TaskDataB
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Repository(context: Context) {
+class Repository (context: Context) {
+
+
 
     private val mTaskDataBase = TaskDataBase.getDataBase(context).taskDAO()
     private val mProjectDataBase = ProjectDataBase.getDataBase(context).projectDAO()

@@ -84,6 +84,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         updateStatus(taskId, false)
     }
 
+    //On click complete/undo
     private fun updateStatus(taskId: Int, complete: Boolean) {
         val task: TaskModel = getTask(taskId)
         task.complete = complete
@@ -98,5 +99,6 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
         mRepository.updateTask(task)
         mRepository.updateProject(project)
+        load()
     }
 }
