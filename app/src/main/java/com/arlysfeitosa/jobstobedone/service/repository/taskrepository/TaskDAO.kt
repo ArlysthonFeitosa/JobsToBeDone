@@ -3,6 +3,7 @@ package com.arlysfeitosa.jobstobedone.service.repository.taskrepository
 import androidx.room.*
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
+import java.util.*
 
 @Dao
 interface TaskDAO {
@@ -24,5 +25,8 @@ interface TaskDAO {
 
     @Query("SELECT * FROM tasks WHERE date = :date")
     fun getTomorrowTasks(date: String): List<TaskModel>
+
+    @Query("SELECT * FROM tasks WHERE date IN (:dateList) ")
+    fun getAfterTasks(dateList: List<String>): List<TaskModel>
 
 }

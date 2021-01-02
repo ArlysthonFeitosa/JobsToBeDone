@@ -73,19 +73,27 @@ class Repository (context: Context) {
         val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
         val tomorrowDate = dateFormater.format(calendar.time)
 
+
         return mTaskDataBase.getTomorrowTasks(tomorrowDate)
     }
 
     fun getAfterTasks(dateFormat: String): List<TaskModel> {
 
+        val nextSevenDaysList:MutableList<String> = mutableListOf<String>()
+        val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
+        var date:String = "00/00/0000"
+
         val calendar = Calendar.getInstance()
         calendar.time = Date()
-        calendar.add(Calendar.DAY_OF_MONTH, 1)
+        calendar.add(Calendar.DAY_OF_MONTH, 1) //Can't count tomorrow
 
-        val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
-        val tomorrowDate = dateFormater.format(calendar.time)
+        for(i in 0..5){
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+            date = dateFormater.format(calendar.time)
+            nextSevenDaysList.add(i, date)
+        }
 
-        return mTaskDataBase.getTomorrowTasks(tomorrowDate)
+        return mTaskDataBase.getAfterTasks(nextSevenDaysList)
     }
 
     fun getExpiredTasks(currentDate: String) {

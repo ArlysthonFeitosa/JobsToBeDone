@@ -67,6 +67,7 @@ class ProjectFormActivity : AppCompatActivity(), View.OnClickListener {
                 val projectName = edit_project.text.toString()
                 mViewModel.saveProject(projectName)
                 mViewModel.load()
+                edit_project.text.clear()
             } else {
                 Toast.makeText(this, getString(R.string.project_name_alert), Toast.LENGTH_LONG)
             }

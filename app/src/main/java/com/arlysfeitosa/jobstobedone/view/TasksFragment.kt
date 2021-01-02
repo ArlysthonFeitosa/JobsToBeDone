@@ -25,6 +25,7 @@ class TasksFragment() : Fragment() {
     private lateinit var mListener: TaskListener
     private val mTodayTaskAdapter = TasksAdapter()
     private val mTomorrowTasksAdapter = TasksAdapter()
+    private val mAfterTasksAdapter = TasksAdapter()
     private lateinit var dateFormater: SimpleDateFormat
     private lateinit var root: View
 
@@ -47,16 +48,10 @@ class TasksFragment() : Fragment() {
         return root
     }
 
-    private fun checkTasks(){
-        var todayTasks:List<TaskModel> = mViewModel.getTodayTasks()
-        var tomorroyTasks:List<TaskModel> = mViewModel.getTomorrowTasks()
-        var afterTasks:List<TaskModel>
-
-        if(mViewModel.getTodayTasks().isNullOrEmpty()){
-            text_today.isVisible = false
-        } else if(mViewModel.getTomorrowTasks().isNullOrEmpty()){
-            text_tomorrow.isVisible = false
-        }else if(mViewModel.getAfterTasks().isNullOrEmpty())
+    private fun checkTasks() {
+        text_today.isVisible = !mViewModel.todayTasks.value.isNullOrEmpty()
+        text_tomorrow.isVisible = !mViewModel.tomorrowTasks.value.isNullOrEmpty()
+        text_after.isVisible = !mViewModel.afterTasks.value.isNullOrEmpty()
     }
 
     private fun attachCurrentDate() {
@@ -76,8 +71,13 @@ class TasksFragment() : Fragment() {
         tomorrowTasksRecycler.layoutManager = LinearLayoutManager(context)
         tomorrowTasksRecycler.adapter = mTomorrowTasksAdapter
 
+        val afterTasksRecycler = root.findViewById<RecyclerView>(R.id.recycler_after)
+        afterTasksRecycler.layoutManager = LinearLayoutManager(context)
+        afterTasksRecycler.adapter = mAfterTasksAdapter
+
         mTodayTaskAdapter.attachListener(mListener)
         mTomorrowTasksAdapter.attachListener(mListener)
+        mAfterTasksAdapter.attachListener(mListener)
     }
 
     private fun startListener() {
@@ -96,7 +96,7 @@ class TasksFragment() : Fragment() {
                 alert.setMessage(getString(R.string.alert_delete_task_message))
                 alert.setPositiveButton(getString(R.string.alert_delete_positive)) { _, _ ->
                     val task = mViewModel.getTask(id)
-                    if(task.complete){
+                    if (task.complete) {
                         mViewModel.undo(id)
                     }
                     mViewModel.deleteTask(id)
@@ -117,10 +117,17 @@ class TasksFragment() : Fragment() {
         mViewModel.todayTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             mTodayTaskAdapter.updateListener(it)
             mTodayTaskAdapter.notifyDataSetChanged()
+            checkTasks()
         })
         mViewModel.tomorrowTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             mTomorrowTasksAdapter.updateListener(it)
             mTomorrowTasksAdapter.notifyDataSetChanged()
+            checkTasks()
+        })
+        mViewModel.afterTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            mAfterTasksAdapter.updateListener(it)
+            mAfterTasksAdapter.notifyDataSetChanged()
+            checkTasks()
         })
     }
 }

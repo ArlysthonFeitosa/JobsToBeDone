@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.Repository
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -43,6 +45,8 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     fun load() {
         mTodayTasks.value = mRepository.getTodayTasks(this.currentDate)
         mTomorrowTasks.value = mRepository.getTomorrowTasks(dateFomat)
+        mAfterTasks.value = mRepository.getAfterTasks(dateFomat)
+        val a = 0
     }
 
     fun getTask(id: Int): TaskModel {
@@ -56,7 +60,6 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     fun getTodayTasks(): List<TaskModel> {
         val todayTasks: List<TaskModel> = mRepository.getTodayTasks(this.currentDate)
         mTodayTasks.value = todayTasks
-
         return todayTasks
     }
 
