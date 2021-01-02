@@ -19,8 +19,8 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
     private var mTask = MutableLiveData<TaskModel>()
     val task: LiveData<TaskModel> = mTask
 
-    private var mAllProjects = MutableLiveData<List<String>>()
-    val allProjects: LiveData<List<String>> = mAllProjects
+    private var mAllProjectNames = MutableLiveData<List<String>>()
+    val allProjectNames: LiveData<List<String>> = mAllProjectNames
 
 
     fun saveTask(taskId:Int = 0, projectName: String = "", taskName: String, complete: Boolean = false, dateLimit: String) {
@@ -42,7 +42,7 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
 
     }
 
-    fun getAllProjects(){
-        mAllProjects.value =  mRepository.getAllProjects()
+    fun getAllProjectNames(){
+        mAllProjectNames.value =  mRepository.getAllProjectNames()
     }
 }

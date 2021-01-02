@@ -21,6 +21,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:text="@string/create_project_description"
             android:textAlignment="center"
             android:textColor="@color/LightBlue"
@@ -78,12 +79,15 @@
             android:layout_height="2dp"
             android:layout_below="@+id/edit_project"
             android:layout_marginTop="16dp"
-            android:background="@color/LightBlue"/>
+            android:background="@color/DarkBlueVariant"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_projects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view_split"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="16dp"
             tools:listitem="@layout/layout_project"/>
 

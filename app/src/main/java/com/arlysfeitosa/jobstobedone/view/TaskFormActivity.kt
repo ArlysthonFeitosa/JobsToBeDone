@@ -32,7 +32,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
         mDateFormat = SimpleDateFormat(getString(R.string.date_format), Locale.ENGLISH)
 
         mViewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
-        mViewModel.getAllProjects()
+        mViewModel.getAllProjectNames()
         observe()
         button_date_picker.setOnClickListener(this)
         button_save_task.setOnClickListener(this)
@@ -45,7 +45,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun observe() {
-        mViewModel.allProjects.observe(this, Observer {
+        mViewModel.allProjectNames.observe(this, Observer {
             loadSpinner(it)
         })
     }

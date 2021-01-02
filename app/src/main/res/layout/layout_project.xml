@@ -31,18 +31,18 @@
             android:textSize="22sp"/>
 
         <TextView
-            android:id="@+id/text_taskProject"
+            android:id="@+id/text_task_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_project"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="8dp"
-            android:text="Tasks Count: 0"
+            android:text="@string/task_count"
             android:textColor="@color/LightBlue" />
 
         <ImageView
-            android:id="@+id/switch_complete"
+            android:id="@+id/button_delete_project"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignParentTop="true"
@@ -51,7 +51,6 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_trash"/>
-
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

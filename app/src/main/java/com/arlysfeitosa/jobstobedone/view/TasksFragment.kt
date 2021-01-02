@@ -1,25 +1,23 @@
 package com.arlysfeitosa.jobstobedone.view
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arlysfeitosa.jobstobedone.R
 import com.arlysfeitosa.jobstobedone.service.listener.TaskListener
+import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.view.adapter.TasksAdapter
 import com.arlysfeitosa.jobstobedone.viewmodel.TasksViewModel
+import kotlinx.android.synthetic.main.fragment_tasks.*
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.stream.DoubleStream.builder
-import java.util.stream.IntStream.builder
 
 class TasksFragment() : Fragment() {
 
@@ -47,6 +45,18 @@ class TasksFragment() : Fragment() {
         mViewModel.load() //Load Tasks
 
         return root
+    }
+
+    private fun checkTasks(){
+        var todayTasks:List<TaskModel> = mViewModel.getTodayTasks()
+        var tomorroyTasks:List<TaskModel> = mViewModel.getTomorrowTasks()
+        var afterTasks:List<TaskModel>
+
+        if(mViewModel.getTodayTasks().isNullOrEmpty()){
+            text_today.isVisible = false
+        } else if(mViewModel.getTomorrowTasks().isNullOrEmpty()){
+            text_tomorrow.isVisible = false
+        }else if(mViewModel.getAfterTasks().isNullOrEmpty())
     }
 
     private fun attachCurrentDate() {
@@ -82,8 +92,8 @@ class TasksFragment() : Fragment() {
 
             override fun onDeleteClick(id: Int) {
                 val alert = AlertDialog.Builder(context)
-                alert.setTitle(getString(R.string.alert_delete_title))
-                alert.setMessage(getString(R.string.alert_delete_message))
+                alert.setTitle(getString(R.string.alert_delete_task_title))
+                alert.setMessage(getString(R.string.alert_delete_task_message))
                 alert.setPositiveButton(getString(R.string.alert_delete_positive)) { _, _ ->
                     val task = mViewModel.getTask(id)
                     if(task.complete){

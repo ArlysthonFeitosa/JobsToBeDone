@@ -16,8 +16,8 @@ class ProjectFormViewModel(application: Application) : AndroidViewModel(applicat
     private var mSaveProject = MutableLiveData<Boolean>()
     val saveProject: LiveData<Boolean> = mSaveProject
 
-    private var mProject = MutableLiveData<ProjectModel>()
-    val project: LiveData<ProjectModel> = mProject
+    private var mAllProjects = MutableLiveData<List<ProjectModel>>()
+    val allProjects: LiveData<List<ProjectModel>> = mAllProjects
 
     fun saveProject(projectName: String) {
         try {
@@ -26,12 +26,21 @@ class ProjectFormViewModel(application: Application) : AndroidViewModel(applicat
                 this.tasksCount = 0
             }
             mSaveProject.value = mRepository.saveProject(project)
-        } catch (e:Exception){
+        } catch (e: Exception) {
             mSaveProject.value = false
         }
     }
 
-    fun load(projectName: String) {
-        mProject.value = mRepository.getProject(projectName)
+    fun load() {
+        mAllProjects.value = mRepository.getAllProjects()
     }
+
+    fun getProject(projectName: String): ProjectModel {
+        return mRepository.getProject(projectName)
+    }
+
+    fun deleteProject(projectName: String) {
+        mRepository.deleteProject(getProject(projectName))
+    }
+
 }

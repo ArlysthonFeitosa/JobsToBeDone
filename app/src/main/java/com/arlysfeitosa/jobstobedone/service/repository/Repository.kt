@@ -53,8 +53,12 @@ class Repository (context: Context) {
         mProjectDataBase.delete(project)
     }
 
-    fun getAllProjects(): List<String> {
+    fun getAllProjectNames(): List<String> {
         return mProjectDataBase.getAllProjectNames()
+    }
+
+    fun getAllProjects():List<ProjectModel>{
+        return mProjectDataBase.getAllProjects()
     }
 
     fun getTodayTasks(currentDate: String): List<TaskModel> {
@@ -72,8 +76,16 @@ class Repository (context: Context) {
         return mTaskDataBase.getTomorrowTasks(tomorrowDate)
     }
 
-    fun getAfterTasks(currentDate: String) {
+    fun getAfterTasks(dateFormat: String): List<TaskModel> {
 
+        val calendar = Calendar.getInstance()
+        calendar.time = Date()
+        calendar.add(Calendar.DAY_OF_MONTH, 1)
+
+        val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
+        val tomorrowDate = dateFormater.format(calendar.time)
+
+        return mTaskDataBase.getTomorrowTasks(tomorrowDate)
     }
 
     fun getExpiredTasks(currentDate: String) {

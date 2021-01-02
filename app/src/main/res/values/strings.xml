@@ -18,10 +18,17 @@
     <string name="project_name_error">Something went wrong, try another project name.</string>
     <string name="create_task_description">Create your tasks according to your projects.</string>
     <string name="date_format">MM/dd/yyyy</string>
-    <string name="alert_delete_title">Delete Task?</string>
-    <string name="alert_delete_message">Do you want to delete the task?</string>
+
+    <string name="alert_delete_task_title">Delete Task?</string>
+    <string name="alert_delete_task_message">Do you want to delete the task?</string>
+
+    <string name="alert_delete_project_title">Delete Project??</string>
+    <string name="alert_delete_project_message">Do you want to delete the project?</string>
+
     <string name="alert_delete_positive">Delete</string>
     <string name="alert_delete_negative">Cancel</string>
+
     <string name="have_to_create_project">Before creating tasks, you have to create any project</string>
+    <string name="task_count">Tasks Count: </string>
 
 </resources>

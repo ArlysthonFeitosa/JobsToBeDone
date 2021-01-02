@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.Repository
-import kotlinx.coroutines.delay
 
 class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -27,21 +26,21 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     val expiredTasks: LiveData<List<TaskModel>> = mExpiredTasks
 
     private var currentDate: String = "00/00/0000"
-    var dateFomat:String = "MM/dd/yyyy"
+    var dateFomat: String = "MM/dd/yyyy"
 
-    fun attachDateFormat(dateFomatString: String){
+    fun attachDateFormat(dateFomatString: String) {
         this.dateFomat = dateFomatString
     }
 
-    fun attachCurrentDate(currentDate: String){
+    fun attachCurrentDate(currentDate: String) {
         this.currentDate = currentDate
     }
 
-    fun deleteTask(id:Int){
+    fun deleteTask(id: Int) {
         mRepository.deleteTask(id)
     }
 
-    fun load(){
+    fun load() {
         mTodayTasks.value = mRepository.getTodayTasks(this.currentDate)
         mTomorrowTasks.value = mRepository.getTomorrowTasks(dateFomat)
     }
@@ -54,16 +53,23 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         return mRepository.getProject(projectName)
     }
 
-    fun getTodayTasks() {
-        mTodayTasks.value = mRepository.getTodayTasks(this.currentDate)
+    fun getTodayTasks(): List<TaskModel> {
+        val todayTasks: List<TaskModel> = mRepository.getTodayTasks(this.currentDate)
+        mTodayTasks.value = todayTasks
+
+        return todayTasks
     }
 
-    fun getTomorrowTasks() {
-        mTomorrowTasks.value = mRepository.getTomorrowTasks(dateFomat)
+    fun getTomorrowTasks(): List<TaskModel> {
+        val tomorrowTasks: List<TaskModel> = mRepository.getTomorrowTasks(dateFomat)
+        mTomorrowTasks.value = tomorrowTasks
+        return tomorrowTasks
     }
 
-    fun getAfterTasks(currentDate: String) {
-
+    fun getAfterTasks(): List<TaskModel> {
+        val afterTasks: List<TaskModel> = mRepository.getAfterTasks(this.currentDate)
+        mTomorrowTasks.value = afterTasks
+        return afterTasks
     }
 
     fun getExpiredTasks(currentDate: String) {
@@ -80,19 +86,19 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
     //On click complete/undo
     private fun updateStatus(taskId: Int, complete: Boolean) {
-            val task: TaskModel = getTask(taskId)
-            task.complete = complete
+        val task: TaskModel = getTask(taskId)
+        task.complete = complete
 
-            val project: ProjectModel = getProject(task.projectName)
+        val project: ProjectModel = getProject(task.projectName)
 
-            if (complete) {
-                project.tasksCount++
-            } else if (project.tasksCount != 0){
-                project.tasksCount--
-            }
-            mRepository.updateTask(task)
-            mRepository.updateProject(project)
-            load()
+        if (complete) {
+            project.tasksCount++
+        } else if (project.tasksCount != 0) {
+            project.tasksCount--
         }
+        mRepository.updateTask(task)
+        mRepository.updateProject(project)
+        load()
+    }
 
 }
