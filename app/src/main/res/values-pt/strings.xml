@@ -31,4 +31,9 @@
     <string name="have_to_create_project">Antes de criar tarefas, você deve criar algum projeto.</string>
     <string name="task_count">Contador de tarefas: </string>
 
+    <string-array name="spinner_tasks">
+        <item>Afazer</item>
+        <item>Expiradas</item>
+    </string-array>
+
 </resources>

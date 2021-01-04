@@ -41,7 +41,6 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
     private fun loadSpinner(listProjectNames: List<String>) {
         val adapterSpinner = ArrayAdapter(this, R.layout.layout_spinner, listProjectNames)
         spinner_projects.adapter = adapterSpinner
-
     }
 
     private fun observe() {

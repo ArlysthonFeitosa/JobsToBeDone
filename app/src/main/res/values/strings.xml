@@ -9,7 +9,7 @@
     <string name="project">Project</string>
     <string name="create">Create</string>
     <string name="projects">Projetos</string>
-    <string name="create_project_description">You can separate your tasks by your projects</string>
+    <string name="create_project_description">You can separate your tasks between your projects</string>
     <string name="create_project_example">Example: Gym, School, Work</string>
     <string name="select_date_limit">Select Date Limit</string>
     <string name="create_task">Create Task</string>
@@ -30,5 +30,10 @@
 
     <string name="have_to_create_project">Before creating tasks, you have to create any project</string>
     <string name="task_count">Tasks Count: </string>
+
+    <string-array name="spinner_tasks">
+        <item>To Do</item>
+        <item>Overdue</item>
+    </string-array>
 
 </resources>
