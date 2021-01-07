@@ -46,7 +46,6 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         mTodayTasks.value = mRepository.getTodayTasks(this.currentDate)
         mTomorrowTasks.value = mRepository.getTomorrowTasks(dateFomat)
         mAfterTasks.value = mRepository.getAfterTasks(dateFomat)
-        val a = 0
     }
 
     fun getTask(id: Int): TaskModel {
@@ -99,9 +98,9 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         } else if (project.tasksCount != 0) {
             project.tasksCount--
         }
+
         mRepository.updateTask(task)
         mRepository.updateProject(project)
         load()
     }
-
 }

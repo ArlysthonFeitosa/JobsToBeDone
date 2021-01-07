@@ -1,12 +1,12 @@
 package com.arlysfeitosa.jobstobedone.view
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arlysfeitosa.jobstobedone.R
 import com.arlysfeitosa.jobstobedone.service.listener.TaskListener
+import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.view.adapter.TasksAdapter
 import com.arlysfeitosa.jobstobedone.viewmodel.TasksViewModel
 import kotlinx.android.synthetic.main.fragment_tasks.*
@@ -50,9 +51,14 @@ class TasksFragment() : Fragment() {
         return root
     }
 
+    fun updateTaskFromForm(task: TaskModel) {
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadSpinner()
+        mTodayTaskAdapter.notifyDataSetChanged()
     }
 
     override fun onResume() {
@@ -78,7 +84,8 @@ class TasksFragment() : Fragment() {
                 mViewModel.undo(id)
             }
 
-            override fun onDeleteClick(id: Int) {
+            override fun onDeleteClick(id: Int): Boolean {
+                var mReturn:Boolean = false
                 val alert = AlertDialog.Builder(context)
                 alert.setTitle(getString(R.string.alert_delete_task_title))
                 alert.setMessage(getString(R.string.alert_delete_task_message))
@@ -89,9 +96,14 @@ class TasksFragment() : Fragment() {
                     }
                     mViewModel.deleteTask(id)
                     mViewModel.load()
+                    mReturn = true
                 }
-                alert.setNeutralButton(getString(R.string.alert_delete_negative), null)
+                alert.setNegativeButton(getString(R.string.alert_delete_negative), null)
+                alert.setOnCancelListener {
+
+                }
                 alert.show()
+                return mReturn
             }
         }
     }
@@ -126,30 +138,36 @@ class TasksFragment() : Fragment() {
 
         val spinnerEntriesPt = listOf<String>("Afazer", "Expiradas")
         val spinnerEntriesEn = listOf<String>("To Do", "Overdue")
-        lateinit var spinnerAdapter: ArrayAdapter<String>
 
-        if (language == "pt") {
-            spinnerAdapter = ArrayAdapter(activity!!.applicationContext, R.layout.layout_spinner, spinnerEntriesPt)
+        val spinnerAdapter = if (language == "pt") {
+            ArrayAdapter(
+                activity!!.applicationContext,
+                R.layout.layout_spinner,
+                spinnerEntriesPt
+            )
         } else {
-            spinnerAdapter = ArrayAdapter(activity!!.applicationContext, R.layout.layout_spinner, spinnerEntriesEn)
+            ArrayAdapter(
+                activity!!.applicationContext,
+                R.layout.layout_spinner,
+                spinnerEntriesEn
+            )
         }
         spinner_task_filter.adapter = spinnerAdapter
     }
 
     private fun observer() {
         mViewModel.todayTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            mTodayTaskAdapter.updateListener(it)
-            mTodayTaskAdapter.notifyDataSetChanged()
+            if(!mTodayTaskAdapter.updateListener(it)){
+                Toast.makeText(context, "Erro", Toast.LENGTH_SHORT).show()
+            }
             checkTasks()
         })
         mViewModel.tomorrowTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             mTomorrowTasksAdapter.updateListener(it)
-            mTomorrowTasksAdapter.notifyDataSetChanged()
             checkTasks()
         })
         mViewModel.afterTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             mAfterTasksAdapter.updateListener(it)
-            mAfterTasksAdapter.notifyDataSetChanged()
             checkTasks()
         })
     }

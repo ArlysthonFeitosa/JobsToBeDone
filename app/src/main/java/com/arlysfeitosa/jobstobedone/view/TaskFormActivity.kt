@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.arlysfeitosa.jobstobedone.R
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.viewmodel.TaskFormViewModel
+import com.arlysfeitosa.jobstobedone.viewmodel.TasksViewModel
 import kotlinx.android.synthetic.main.activity_project_form.*
 import kotlinx.android.synthetic.main.activity_task_form.*
 import java.lang.Exception
@@ -21,9 +22,9 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
     private lateinit var mViewModel: TaskFormViewModel
-    private var mDateSelected = true
+    private var mDateSelected = false
     private lateinit var mDateFormat: SimpleDateFormat
-
+    //private lateinit var mTasksViewModel:TasksViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
         mDateFormat = SimpleDateFormat(getString(R.string.date_format), Locale.ENGLISH)
 
         mViewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
+
         mViewModel.getAllProjectNames()
         observe()
         button_date_picker.setOnClickListener(this)
@@ -86,7 +88,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener,
         val calendar = Calendar.getInstance()
         calendar.set(year, month, dayOfMonth)
         button_date_picker.text = mDateFormat.format(calendar.time)
-        mDateSelected = true
+        this.mDateSelected = true
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
