@@ -51,10 +51,6 @@ class TasksFragment() : Fragment() {
         return root
     }
 
-    fun updateTaskFromForm(task: TaskModel) {
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadSpinner()

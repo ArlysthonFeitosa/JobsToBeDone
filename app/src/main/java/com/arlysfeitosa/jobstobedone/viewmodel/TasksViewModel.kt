@@ -78,29 +78,34 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun complete(taskId: Int) {
-        updateStatus(taskId, true)
+    fun complete(taskId: Int): Boolean {
+        return updateStatus(taskId, true)
     }
 
-    fun undo(taskId: Int) {
-        updateStatus(taskId, false)
+    fun undo(taskId: Int): Boolean {
+        return updateStatus(taskId, false)
     }
 
     //On click complete/undo
-    private fun updateStatus(taskId: Int, complete: Boolean) {
-        val task: TaskModel = getTask(taskId)
-        task.complete = complete
+    private fun updateStatus(taskId: Int, complete: Boolean): Boolean {
+        val task: TaskModel? = getTask(taskId)
+        if (task?.complete != null && task.projectName != null) {
+            task?.complete = complete
 
-        val project: ProjectModel = getProject(task.projectName)
+            val project: ProjectModel = getProject(task.projectName)
 
-        if (complete) {
-            project.tasksCount++
-        } else if (project.tasksCount != 0) {
-            project.tasksCount--
+            if (complete) {
+                project.tasksCount++
+            } else if (project.tasksCount != 0) {
+                project.tasksCount--
+            }
+
+            mRepository.updateTask(task)
+            mRepository.updateProject(project)
+            load()
+            return true
+        } else {
+            return false
         }
-
-        mRepository.updateTask(task)
-        mRepository.updateProject(project)
-        load()
     }
 }

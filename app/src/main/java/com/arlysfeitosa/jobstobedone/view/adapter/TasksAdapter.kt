@@ -1,7 +1,9 @@
 package com.arlysfeitosa.jobstobedone.view.adapter
 
+import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.arlysfeitosa.jobstobedone.R
@@ -9,6 +11,7 @@ import com.arlysfeitosa.jobstobedone.service.listener.TaskListener
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.view.viewholder.TasksViewHolder
 import com.arlysfeitosa.jobstobedone.viewmodel.TasksViewModel
+import kotlin.coroutines.coroutineContext
 
 class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
 
@@ -28,43 +31,41 @@ class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
     override fun onBindViewHolder(holderToday: TasksViewHolder, position: Int) {
         val task = mList[position]
         holderToday.bindData(task)
-        holderToday.mComplete.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                if (task.complete == false) {
-                    mListener.onCompleteClick(task.id)
-                    try {
-                        notifyItemChanged(holderToday.adapterPosition)
-                    }catch (e:Exception){
-                        mListener.onUndoClick(task.id)
-                        notifyItemChanged(holderToday.adapterPosition)
-                    }
-                } else {
-                    holderToday.mComplete.isChecked = true
-                }
-
-            } else if (!isChecked) {
-                if (task.complete == true) {
-                    mListener.onUndoClick(task.id)
-                    try {
-                        notifyItemChanged(holderToday.adapterPosition)
-                    }catch (e:Exception){
+        synchronized(this){
+            holderToday.mComplete.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) {
+                    if (task.complete == false) {
                         mListener.onCompleteClick(task.id)
+                        try {
+                            notifyItemChanged(holderToday.adapterPosition)
+                        }catch (e:Exception){
+                            mListener.onUndoClick(task.id)
+                        }
+                    } else {
+                        holderToday.mComplete.isChecked = true
                     }
 
-                } else {
-                    holderToday.mComplete.isChecked = false
+                } else if (!isChecked) {
+                    if (task.complete == true) {
+                        mListener.onUndoClick(task.id)
+                        try {
+                            notifyItemChanged(holderToday.adapterPosition)
+                        }catch (e:Exception){
+                            mListener.onCompleteClick(task.id)
+                        }
+                    } else {
+                        holderToday.mComplete.isChecked = false
+                    }
                 }
             }
-        }
 
-        holderToday.itemView.setOnLongClickListener {
-            if (mListener.onDeleteClick(task.id)) {
-                notifyItemRemoved(holderToday.adapterPosition)
-                notifyItemRangeChanged(1, mList.count())
+            holderToday.itemView.setOnLongClickListener {
+                if (mListener.onDeleteClick(task.id)) {
+                    notifyItemRemoved(holderToday.adapterPosition)
+                }
+                true
             }
-            true
         }
-
     }
 
     fun attachListener(listener: TaskListener) {
@@ -79,8 +80,10 @@ class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
         mList = list
         if(haveToNotify){
             try {
-                notifyDataSetChanged()
-                haveToNotify = false
+                synchronized(this){
+                    notifyDataSetChanged()
+                    haveToNotify = false
+                }
             }catch (e:Exception){
                 return false
             }

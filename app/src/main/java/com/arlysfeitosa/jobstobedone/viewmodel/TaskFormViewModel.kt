@@ -35,7 +35,6 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
             this.complete = complete
             this.date = dateLimit
         }
-        TasksFragment().updateTaskFromForm(task)
         mSaveTask.value = mRepository.saveTask(task)
     }
 
