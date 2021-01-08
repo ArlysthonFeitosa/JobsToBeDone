@@ -117,6 +117,10 @@ class TasksFragment() : Fragment() {
         afterTasksRecycler.layoutManager = LinearLayoutManager(context)
         afterTasksRecycler.adapter = mAfterTasksAdapter
 
+        todayTasksRecycler.isNestedScrollingEnabled = false
+        tomorrowTasksRecycler.isNestedScrollingEnabled = false
+        afterTasksRecycler.isNestedScrollingEnabled = false
+
         mTodayTaskAdapter.attachListener(mListener)
         mTomorrowTasksAdapter.attachListener(mListener)
         mAfterTasksAdapter.attachListener(mListener)
