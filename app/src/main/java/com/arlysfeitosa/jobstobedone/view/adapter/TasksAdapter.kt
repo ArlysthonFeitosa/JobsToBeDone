@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import com.arlysfeitosa.jobstobedone.R
 import com.arlysfeitosa.jobstobedone.service.listener.TaskListener
@@ -32,7 +33,7 @@ class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
         val task = mList[position]
         holderToday.bindData(task)
         synchronized(this){
-            holderToday.mComplete.setOnCheckedChangeListener { buttonView, isChecked ->
+            holderToday.mComplete.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     if (task.complete == false) {
                         mListener.onCompleteClick(task.id)
@@ -62,6 +63,7 @@ class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
             holderToday.itemView.setOnLongClickListener {
                 if (mListener.onDeleteClick(task.id)) {
                     notifyItemRemoved(holderToday.adapterPosition)
+
                 }
                 true
             }
@@ -90,8 +92,4 @@ class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
         }
         return true
     }
-
-    fun saveTask(taskModel: TaskModel, position: Int) {
-    }
-
 }

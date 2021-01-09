@@ -81,7 +81,7 @@ class TasksFragment() : Fragment() {
             }
 
             override fun onDeleteClick(id: Int): Boolean {
-                var mReturn:Boolean = false
+                var mReturn: Boolean = false
                 val alert = AlertDialog.Builder(context)
                 alert.setTitle(getString(R.string.alert_delete_task_title))
                 alert.setMessage(getString(R.string.alert_delete_task_message))
@@ -157,7 +157,7 @@ class TasksFragment() : Fragment() {
 
     private fun observer() {
         mViewModel.todayTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            if(!mTodayTaskAdapter.updateListener(it)){
+            if (!mTodayTaskAdapter.updateListener(it)) {
                 Toast.makeText(context, "Erro", Toast.LENGTH_SHORT).show()
             }
             checkTasks()
