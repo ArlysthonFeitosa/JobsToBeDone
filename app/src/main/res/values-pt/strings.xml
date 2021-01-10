@@ -36,4 +36,8 @@
         <item>Expiradas</item>
     </string-array>
 
+    <string name="all">Todas:</string>
+    <string name="done">Completas:</string>
+    <string name="expired_or_to_do">Expiradas/Afazer:</string>
+
 </resources>

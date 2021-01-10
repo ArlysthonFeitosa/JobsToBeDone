@@ -36,4 +36,8 @@
         <item>Overdue</item>
     </string-array>
 
+    <string name="all">All:</string>
+    <string name="done">Done:</string>
+    <string name="expired_or_to_do">Expired/To Do:</string>
+
 </resources>

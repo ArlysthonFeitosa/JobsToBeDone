@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="All:"
+                    android:text="@string/all"
                     android:textColor="@color/DarkBlueVariant"
                     android:textSize="32sp"
                     app:layout_constraintBottom_toTopOf="@+id/text_done_firstcard"
@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Done:"
+                    android:text="@string/done"
                     android:textColor="@color/DarkBlueVariant"
                     android:textSize="32sp"
                     app:layout_constraintBottom_toTopOf="@+id/text_expired_firstcard"
@@ -51,11 +51,48 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Expired/To Do:"
+                    android:text="@string/expired_or_to_do"
                     android:textColor="@color/DarkBlueVariant"
                     android:textSize="32sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_done_firstcard" />
+
+
+                <TextView
+                    android:id="@+id/value_all_firstcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="000"
+                    android:textColor="@color/DarkBlueVariant"
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_done_firstcard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/value_done_firstcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="000"
+                    android:textColor="@color/DarkBlueVariant"
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_expired_firstcard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_all_firstcard" />
+
+                <TextView
+                    android:id="@+id/value_expired_firstcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="000"
+                    android:textColor="@color/DarkBlueVariant"
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text_done_firstcard" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

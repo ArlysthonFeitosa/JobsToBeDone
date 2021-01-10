@@ -99,4 +99,17 @@ class Repository (context: Context) {
     fun getExpiredTasks(currentDate: String) {
 
     }
+
+    fun getAllTasksCount():Int {
+        return mTaskDataBase.getAllTasksCount()
+    }
+
+    fun getDoneTasksCount():Int {
+        return mTaskDataBase.getDoneTasksCount()
+    }
+
+    fun getExpiredOrToDoTasksCount():Int {
+        return mTaskDataBase.getExpiredOrToDoTasksCount()
+    }
+
 }

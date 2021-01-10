@@ -25,4 +25,6 @@ interface ProjectDAO {
     @Query("SELECT * FROM projects")
     fun getAllProjects(): List<ProjectModel>
 
+
+
 }
