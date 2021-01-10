@@ -29,7 +29,7 @@
     <string name="alert_delete_negative">Cancelar</string>
 
     <string name="have_to_create_project">Antes de criar tarefas, você deve criar algum projeto.</string>
-    <string name="task_count">Contador de tarefas: </string>
+    <string name="task_count">Tarefas Completas: </string>
 
     <string-array name="spinner_tasks">
         <item>Afazer</item>

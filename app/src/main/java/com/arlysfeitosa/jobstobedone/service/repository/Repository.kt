@@ -1,7 +1,6 @@
 package com.arlysfeitosa.jobstobedone.service.repository
 
 import android.content.Context
-import androidx.room.Room
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.projectrepository.ProjectDataBase
@@ -9,14 +8,13 @@ import com.arlysfeitosa.jobstobedone.service.repository.taskrepository.TaskDataB
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Repository (context: Context) {
+class Repository(context: Context) {
 
     private val mTaskDataBase = TaskDataBase.getDataBase(context).taskDAO()
     private val mProjectDataBase = ProjectDataBase.getDataBase(context).projectDAO()
 
-    fun checkExistsProjects():Boolean{
-        var allProjects:List<String>?  = mProjectDataBase.getAllProjectNames()
-
+    fun checkExistsProjects(): Boolean {
+        val allProjects: List<String>? = mProjectDataBase.getAllProjectNames()
         return !allProjects.isNullOrEmpty()
     }
 
@@ -32,7 +30,7 @@ class Repository (context: Context) {
         return mTaskDataBase.update(task) > 0
     }
 
-    fun deleteTask(id:Int) {
+    fun deleteTask(id: Int){
         val task = mTaskDataBase.getTask(id)
         mTaskDataBase.delete(task)
     }
@@ -57,7 +55,7 @@ class Repository (context: Context) {
         return mProjectDataBase.getAllProjectNames()
     }
 
-    fun getAllProjects():List<ProjectModel>{
+    fun getAllProjects(): List<ProjectModel> {
         return mProjectDataBase.getAllProjects()
     }
 
@@ -73,21 +71,20 @@ class Repository (context: Context) {
         val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
         val tomorrowDate = dateFormater.format(calendar.time)
 
-
         return mTaskDataBase.getTomorrowTasks(tomorrowDate)
     }
 
     fun getAfterTasks(dateFormat: String): List<TaskModel> {
 
-        val nextSevenDaysList:MutableList<String> = mutableListOf<String>()
+        val nextSevenDaysList: MutableList<String> = mutableListOf<String>()
         val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
-        var date:String = "00/00/0000"
+        var date: String = "00/00/0000"
 
         val calendar = Calendar.getInstance()
         calendar.time = Date()
         calendar.add(Calendar.DAY_OF_MONTH, 1) //Can't count tomorrow
 
-        for(i in 0..5){
+        for (i in 0..5) {
             calendar.add(Calendar.DAY_OF_MONTH, 1)
             date = dateFormater.format(calendar.time)
             nextSevenDaysList.add(i, date)
@@ -100,15 +97,15 @@ class Repository (context: Context) {
 
     }
 
-    fun getAllTasksCount():Int {
+    fun getAllTasksCount(): Int {
         return mTaskDataBase.getAllTasksCount()
     }
 
-    fun getDoneTasksCount():Int {
+    fun getDoneTasksCount(): Int {
         return mTaskDataBase.getDoneTasksCount()
     }
 
-    fun getExpiredOrToDoTasksCount():Int {
+    fun getExpiredOrToDoTasksCount(): Int {
         return mTaskDataBase.getExpiredOrToDoTasksCount()
     }
 

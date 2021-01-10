@@ -99,6 +99,41 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_secondcard"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:backgroundTint="@color/LightBlue"
+            android:layout_below="@+id/card_firstcard"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/text_all_secondtcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/all"
+                    android:textColor="@color/DarkBlueVariant"
+                    android:textSize="32sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChard_secondcard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 
 

@@ -7,8 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.Repository
-import java.text.SimpleDateFormat
-import java.util.*
 
 class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -39,6 +37,9 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun deleteTask(id: Int) {
+        val projectToUpdate = mRepository.getProject(mRepository.getTask(id).projectName)
+        projectToUpdate.tasksCount--
+        mRepository.updateProject(projectToUpdate)
         mRepository.deleteTask(id)
     }
 
@@ -95,9 +96,9 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
             val project: ProjectModel = getProject(task.projectName)
 
             if (complete) {
-                project.tasksCount++
-            } else if (project.tasksCount != 0) {
-                project.tasksCount--
+                project.doneTasksCount++
+            } else if (project.doneTasksCount != 0) {
+                project.doneTasksCount--
             }
 
             mRepository.updateTask(task)

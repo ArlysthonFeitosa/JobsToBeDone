@@ -9,8 +9,12 @@ class ProjectModel {
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "project")
-    var project:String = ""
+    var project: String = ""
 
     @ColumnInfo(name = "tasksCount")
     var tasksCount: Int = 0
+
+    @ColumnInfo(name = "doneTasksCount")
+    var doneTasksCount: Int = 0
+
 }

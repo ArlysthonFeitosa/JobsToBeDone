@@ -1,8 +1,5 @@
 package com.arlysfeitosa.jobstobedone.view.viewholder
 
-import android.app.Application
-import android.content.ContentResolver
-import android.provider.Settings.Global.getString
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,7 +17,7 @@ class ProjectsViewHolder(itemView: View, val listener: ProjectListener) :
 
     fun bindData(project: ProjectModel, strTaskCount:String) {
         this.mProjectTitle.text = project.project
-        this.mProjectCount.text = strTaskCount + " " + project.tasksCount.toString()
+        this.mProjectCount.text = strTaskCount + " " + project.doneTasksCount.toString()
 
         mButtonDelete.setOnClickListener {
             listener.onDeleteClick(project.project)

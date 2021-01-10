@@ -29,7 +29,7 @@
     <string name="alert_delete_negative">Cancel</string>
 
     <string name="have_to_create_project">Before creating tasks, you have to create any project</string>
-    <string name="task_count">Tasks Count: </string>
+    <string name="task_count">Done Tasks: </string>
 
     <string-array name="spinner_tasks">
         <item>To Do</item>

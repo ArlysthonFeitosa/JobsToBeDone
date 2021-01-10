@@ -1,17 +1,11 @@
 package com.arlysfeitosa.jobstobedone.viewmodel
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
-import com.arlysfeitosa.jobstobedone.service.model.ProjectModel
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.service.repository.Repository
-import com.arlysfeitosa.jobstobedone.view.TasksFragment
-import java.text.SimpleDateFormat
-import java.util.*
 
 class TaskFormViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -35,7 +29,10 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
             this.complete = complete
             this.date = dateLimit
         }
-        mSaveTask.value = mRepository.saveTask(task)
+        mRepository.saveTask(task)
+        val project = mRepository.getProject(projectName)
+        project.tasksCount++
+        mRepository.updateProject(project)
     }
 
     fun load(id:Int){

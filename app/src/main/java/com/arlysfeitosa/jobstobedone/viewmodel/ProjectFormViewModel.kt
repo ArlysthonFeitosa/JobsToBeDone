@@ -24,6 +24,7 @@ class ProjectFormViewModel(application: Application) : AndroidViewModel(applicat
             val project = ProjectModel().apply {
                 this.project = projectName
                 this.tasksCount = 0
+                this.doneTasksCount = 0
             }
             mSaveProject.value = mRepository.saveProject(project)
         } catch (e: Exception) {
