@@ -1,18 +1,12 @@
 package com.arlysfeitosa.jobstobedone.view.adapter
 
-import android.app.Application
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import com.arlysfeitosa.jobstobedone.R
 import com.arlysfeitosa.jobstobedone.service.listener.TaskListener
 import com.arlysfeitosa.jobstobedone.service.model.TaskModel
 import com.arlysfeitosa.jobstobedone.view.viewholder.TasksViewHolder
-import com.arlysfeitosa.jobstobedone.viewmodel.TasksViewModel
-import kotlin.coroutines.coroutineContext
 
 class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
 
@@ -22,7 +16,7 @@ class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {
         val item = LayoutInflater.from(parent.context).inflate(R.layout.layout_task, parent, false)
-        return TasksViewHolder(item, mListener)
+        return TasksViewHolder(item)
     }
 
     override fun getItemCount(): Int {
