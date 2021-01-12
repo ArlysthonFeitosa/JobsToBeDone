@@ -62,21 +62,18 @@ class InsightsFragment : Fragment() {
         }
 
         val pieDataColors = listOf<Int>(
-            Color.rgb(192, 255, 140),
-            Color.rgb(255, 247, 140),
-            Color.rgb(255, 208, 140),
-            Color.rgb(140, 234, 255),
-            Color.rgb(255, 140, 157),
-            Color.rgb(193, 37, 82),
-            Color.rgb(255, 102, 0),
-            Color.rgb(245, 199, 0),
-            Color.rgb(106, 150, 31),
-            Color.rgb(179, 100, 53),
-            Color.rgb(64, 89, 128),
-            Color.rgb(149, 165, 124),
-            Color.rgb(217, 184, 162),
-            Color.rgb(191, 134, 134),
-            Color.rgb(179, 48, 80)
+            Color.rgb(4, 130, 67),
+            Color.rgb(50, 192, 132),
+            Color.rgb(86, 132, 174),
+            Color.rgb(0, 82, 73),
+            Color.rgb(94, 160, 126),
+            Color.rgb(66, 179, 149),
+            Color.rgb(86, 252, 162),
+            Color.rgb(1, 103, 149),
+            Color.rgb(15, 155, 142),
+            Color.rgb(16, 122, 176),
+            Color.rgb(16, 166, 116),
+            Color.rgb(123, 200, 246)
         )
 
         val pieDataSet: PieDataSet = PieDataSet(pieEntry, "").apply {
@@ -116,21 +113,18 @@ class InsightsFragment : Fragment() {
         }
 
         val pieDataColors = listOf<Int>(
-            Color.rgb(192, 255, 140),
-            Color.rgb(255, 247, 140),
-            Color.rgb(255, 208, 140),
-            Color.rgb(140, 234, 255),
-            Color.rgb(255, 140, 157),
-            Color.rgb(193, 37, 82),
-            Color.rgb(255, 102, 0),
-            Color.rgb(245, 199, 0),
-            Color.rgb(106, 150, 31),
-            Color.rgb(179, 100, 53),
-            Color.rgb(64, 89, 128),
-            Color.rgb(149, 165, 124),
-            Color.rgb(217, 184, 162),
-            Color.rgb(191, 134, 134),
-            Color.rgb(179, 48, 80)
+            Color.rgb(4, 130, 67),
+            Color.rgb(50, 192, 132),
+            Color.rgb(86, 132, 174),
+            Color.rgb(0, 82, 73),
+            Color.rgb(94, 160, 126),
+            Color.rgb(66, 179, 149),
+            Color.rgb(86, 252, 162),
+            Color.rgb(1, 103, 149),
+            Color.rgb(15, 155, 142),
+            Color.rgb(16, 122, 176),
+            Color.rgb(16, 166, 116),
+            Color.rgb(123, 200, 246)
         )
 
         val pieDataSet: PieDataSet = PieDataSet(pieEntry, "").apply {
@@ -143,6 +137,57 @@ class InsightsFragment : Fragment() {
 
         pieChart_thirdcard.data = PieData(pieDataSet)
         if (pieEntry.isEmpty()) pieChart_thirdcard.isVisible = false
+    }
+
+    private fun loadFourthCard(projectLists: List<ProjectModel>) {
+        pieChart_fourthcard.apply {
+            setUsePercentValues(true)
+            description.isEnabled = false
+            legend.isEnabled = false
+            isDrawHoleEnabled = true
+            holeRadius = 30f
+            transparentCircleRadius = 35f
+            setHoleColor(Color.WHITE)
+        }
+
+        val pieEntry: ArrayList<PieEntry> = ArrayList<PieEntry>()
+
+        val expiredOrToDoTasksCount: Int = mViewModel.doneTasksCount.value!!
+
+        var projectExpiredOrToDoTaskCount: Float = 0f
+        for (a in projectLists.indices) {
+            if (expiredOrToDoTasksCount > 0 && (projectLists[a].tasksCount - projectLists[a].doneTasksCount > 0)) {
+                projectExpiredOrToDoTaskCount =
+                    (((projectLists[a].tasksCount - projectLists[a].doneTasksCount) * 100) / expiredOrToDoTasksCount).toFloat()
+                pieEntry.add(PieEntry(projectExpiredOrToDoTaskCount, projectLists[a].project))
+            }
+        }
+
+        val pieDataColors = listOf<Int>(
+            Color.rgb(4, 130, 67),
+            Color.rgb(50, 192, 132),
+            Color.rgb(86, 132, 174),
+            Color.rgb(0, 82, 73),
+            Color.rgb(94, 160, 126),
+            Color.rgb(66, 179, 149),
+            Color.rgb(86, 252, 162),
+            Color.rgb(1, 103, 149),
+            Color.rgb(15, 155, 142),
+            Color.rgb(16, 122, 176),
+            Color.rgb(16, 166, 116),
+            Color.rgb(123, 200, 246)
+        )
+
+        val pieDataSet: PieDataSet = PieDataSet(pieEntry, "").apply {
+            colors = pieDataColors
+            sliceSpace = 3f
+            selectionShift = 5f
+            valueTextColor = R.color.TurquoiseBlue
+            valueTextSize = 15f
+        }
+
+        pieChart_fourthcard.data = PieData(pieDataSet)
+        if (pieEntry.isEmpty()) pieChart_fourthcard.isVisible = false
     }
 
     private fun updateAllTasks(count: Int) {
@@ -170,6 +215,7 @@ class InsightsFragment : Fragment() {
         mViewModel.allProjects.observe(viewLifecycleOwner, Observer {
             loadSecondCard(it)
             loadThirdCard(it)
+            loadFourthCard(it)
         })
     }
 }
