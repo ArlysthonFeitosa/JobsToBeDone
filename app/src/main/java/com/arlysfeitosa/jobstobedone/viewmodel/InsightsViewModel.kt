@@ -39,5 +39,4 @@ class InsightsViewModel(application: Application) : AndroidViewModel(application
     fun getAllProjects(){
         mAllProjects.value = mRepository.getAllProjects()
     }
-
 }

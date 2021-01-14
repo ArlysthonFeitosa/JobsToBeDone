@@ -19,6 +19,8 @@
     <string name="create_task_description">Crie suas tarefas de acordo com o projeto.</string>
     <string name="date_format">dd/MM/yyyy</string>
 
+    <string name="seven_days_ago">7 Dias Atrás</string>
+
     <string name="alert_delete_task_title">Deletar Tarefa?</string>
     <string name="alert_delete_task_message">Você deseja deletar a tarefa?</string>
 

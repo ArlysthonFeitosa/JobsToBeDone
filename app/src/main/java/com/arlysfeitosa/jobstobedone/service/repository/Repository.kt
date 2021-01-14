@@ -26,6 +26,10 @@ class Repository(context: Context) {
         return mTaskDataBase.save(task) > 0
     }
 
+    fun getAllTasks(): List<TaskModel>{
+        return mTaskDataBase.getAllTasks()
+    }
+
     fun updateTask(task: TaskModel): Boolean {
         return mTaskDataBase.update(task) > 0
     }
@@ -93,8 +97,22 @@ class Repository(context: Context) {
         return mTaskDataBase.getAfterTasks(nextSevenDaysList)
     }
 
-    fun getExpiredTasks(currentDate: String) {
+    fun getExpiredTasks(dateFormat: String):List<TaskModel> {
+        val lastSevenDaysList: MutableList<String> = mutableListOf<String>()
+        val dateFormater = SimpleDateFormat(dateFormat, Locale.ENGLISH)
+        var date: String = "00/00/0000"
 
+        val calendar = Calendar.getInstance()
+        calendar.time = Date()//Can't count tomorrow
+
+        for (i in 0..6) {
+            calendar.roll(Calendar.DAY_OF_MONTH, false)
+            calendar.time
+            date = dateFormater.format(calendar.time)
+            lastSevenDaysList.add(i, date)
+        }
+
+        return mTaskDataBase.getOverdueTasks(lastSevenDaysList)
     }
 
     fun getAllTasksCount(): Int {

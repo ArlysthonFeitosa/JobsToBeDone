@@ -25,6 +25,9 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     private var mExpiredTasks = MutableLiveData<List<TaskModel>>()
     val expiredTasks: LiveData<List<TaskModel>> = mExpiredTasks
 
+    private var mAllTasks = MutableLiveData<List<TaskModel>>()
+    val allTasks: LiveData<List<TaskModel>> = mAllTasks
+
     private var currentDate: String = "00/00/0000"
     var dateFomat: String = "MM/dd/yyyy"
 
@@ -47,6 +50,8 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         mTodayTasks.value = mRepository.getTodayTasks(this.currentDate)
         mTomorrowTasks.value = mRepository.getTomorrowTasks(dateFomat)
         mAfterTasks.value = mRepository.getAfterTasks(dateFomat)
+        mExpiredTasks.value = mRepository.getExpiredTasks(dateFomat)
+        mAllTasks.value = mRepository.getAllTasks()
     }
 
     fun getTask(id: Int): TaskModel {

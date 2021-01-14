@@ -29,6 +29,9 @@ interface TaskDAO {
     @Query("SELECT * FROM tasks WHERE date IN (:dateList) ")
     fun getAfterTasks(dateList: List<String>): List<TaskModel>
 
+    @Query("SELECT * FROM tasks WHERE date IN (:dateList) AND complete = 0 ")
+    fun getOverdueTasks(dateList: List<String>): List<TaskModel>
+
     @Query("SELECT COUNT(complete)  FROM tasks WHERE complete = 1")
     fun getDoneTasksCount(): Int
 
@@ -37,5 +40,8 @@ interface TaskDAO {
 
     @Query("SELECT COUNT(task) FROM tasks")
     fun getAllTasksCount(): Int
+
+    @Query("SELECT * FROM tasks")
+    fun getAllTasks(): List<TaskModel>
 
 }

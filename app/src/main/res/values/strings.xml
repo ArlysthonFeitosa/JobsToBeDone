@@ -19,6 +19,8 @@
     <string name="create_task_description">Create your tasks according to your projects.</string>
     <string name="date_format">MM/dd/yyyy</string>
 
+    <string name="seven_days_ago">7 Days Ago</string>
+
     <string name="alert_delete_task_title">Delete Task?</string>
     <string name="alert_delete_task_message">Do you want to delete the task?</string>
 
@@ -38,6 +40,8 @@
 
     <string name="all">All:</string>
     <string name="done">Done:</string>
-    <string name="expired_or_to_do">Expired/To Do:</string>
+    <string name="expired_or_to_do">Overdue/To Do:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
