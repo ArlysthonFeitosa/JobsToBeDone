@@ -125,6 +125,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="32sp"
+                    android:textColor="@color/LightBlue"
+                    android:layout_marginEnd="16dp"/>
+
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pieChart_secondcard"
                     android:layout_marginTop="32dp"
@@ -165,6 +175,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="32sp"
+                    android:textColor="@color/LightBlue"
+                    android:layout_marginEnd="16dp"/>
+
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pieChart_thirdcard"
                     android:layout_marginTop="32dp"
@@ -204,6 +224,16 @@
                     android:textSize="32sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="32sp"
+                    android:textColor="@color/LightBlue"
+                    android:layout_marginEnd="16dp"/>
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pieChart_fourthcard"
