@@ -52,6 +52,7 @@ class InsightsFragment : Fragment() {
         val pieEntry: ArrayList<PieEntry> = ArrayList<PieEntry>()
 
         val allTasksCount: Int = mViewModel.allTasksCount.value!!
+        text_count_secondcard.text = allTasksCount.toString()
 
         var projectTaskCount: Float = 0f
         for (a in projectLists.indices) {
@@ -101,13 +102,14 @@ class InsightsFragment : Fragment() {
 
         val pieEntry: ArrayList<PieEntry> = ArrayList<PieEntry>()
 
-        val DoneTasksCount: Int = mViewModel.doneTasksCount.value!!
+        val doneTasksCount: Int = mViewModel.doneTasksCount.value!!
+        text_count_thirdcard.text = doneTasksCount.toString()
 
         var projectDoneTaskCount: Float = 0f
         for (a in projectLists.indices) {
-            if (DoneTasksCount > 0 && projectLists[a].doneTasksCount > 0) {
+            if (doneTasksCount > 0 && projectLists[a].doneTasksCount > 0) {
                 projectDoneTaskCount =
-                    ((projectLists[a].doneTasksCount * 100) / DoneTasksCount).toFloat()
+                    ((projectLists[a].doneTasksCount * 100) / doneTasksCount).toFloat()
                 pieEntry.add(PieEntry(projectDoneTaskCount, projectLists[a].project))
             }
         }
@@ -152,7 +154,8 @@ class InsightsFragment : Fragment() {
 
         val pieEntry: ArrayList<PieEntry> = ArrayList<PieEntry>()
 
-        val expiredOrToDoTasksCount: Int = mViewModel.doneTasksCount.value!!
+        val expiredOrToDoTasksCount: Int = mViewModel.expiredOrToDoTasksCount.value!!
+        text_count_fourthcard.text = expiredOrToDoTasksCount.toString()
 
         var projectExpiredOrToDoTaskCount: Float = 0f
         for (a in projectLists.indices) {

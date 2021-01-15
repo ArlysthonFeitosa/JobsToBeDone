@@ -115,7 +115,7 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/text_all_secondtcard"
+                    android:id="@+id/text_all_secondcard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -126,6 +126,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/text_count_secondcard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="000"
@@ -176,6 +177,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/text_count_thirdcard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="000"
@@ -226,6 +228,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/text_count_fourthcard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="000"
