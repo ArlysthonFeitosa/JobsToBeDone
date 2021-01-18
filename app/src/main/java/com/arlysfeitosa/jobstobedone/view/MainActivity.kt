@@ -1,9 +1,13 @@
 package com.arlysfeitosa.jobstobedone.view
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.arlysfeitosa.jobstobedone.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ChooseCreateActivity::class.java))
         }
 
+        //text_toolbar.setTypeface(Typeface.createFromAsset(applicationContext.assets.open, "lobster_regular.ttf"))
     }
 }
 

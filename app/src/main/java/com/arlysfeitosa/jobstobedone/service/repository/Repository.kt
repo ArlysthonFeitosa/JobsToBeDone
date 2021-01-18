@@ -53,6 +53,7 @@ class Repository(context: Context) {
 
     fun deleteProject(project: ProjectModel) {
         mProjectDataBase.delete(project)
+        mTaskDataBase.deleteTasksWhereProject(project.project)
     }
 
     fun getAllProjectNames(): List<String> {

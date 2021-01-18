@@ -9,12 +9,22 @@
     android:backgroundTint="@color/DarkBlue">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@color/TurquoiseBlue"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/LightBlue"
-        android:elevation="10dp"/>
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/text_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="22dp"
+            android:textColor="@color/LightBlue"/>
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/fragment_container"

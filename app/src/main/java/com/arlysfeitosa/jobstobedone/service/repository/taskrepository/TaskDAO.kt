@@ -44,4 +44,7 @@ interface TaskDAO {
     @Query("SELECT * FROM tasks")
     fun getAllTasks(): List<TaskModel>
 
+    @Query("DELETE FROM tasks WHERE projectName = :projectName")
+    fun deleteTasksWhereProject(projectName:String)
+
 }

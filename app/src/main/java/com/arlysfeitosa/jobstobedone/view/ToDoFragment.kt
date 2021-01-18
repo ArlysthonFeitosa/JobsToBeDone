@@ -117,10 +117,6 @@ class ToDoFragment : Fragment() {
         afterTasksRecycler.layoutManager = LinearLayoutManager(context)
         afterTasksRecycler.adapter = mAfterTasksAdapter
 
-        todayTasksRecycler.isNestedScrollingEnabled = false
-        tomorrowTasksRecycler.isNestedScrollingEnabled = false
-        afterTasksRecycler.isNestedScrollingEnabled = false
-
         mTodayTaskAdapter.attachListener(mListener)
         mTomorrowTasksAdapter.attachListener(mListener)
         mAfterTasksAdapter.attachListener(mListener)
@@ -128,7 +124,9 @@ class ToDoFragment : Fragment() {
 
     private fun checkTasks() {
         text_today.isVisible = !mViewModel.todayTasks.value.isNullOrEmpty()
+        div_one.isVisible = !mViewModel.tomorrowTasks.value.isNullOrEmpty()
         text_tomorrow.isVisible = !mViewModel.tomorrowTasks.value.isNullOrEmpty()
+        div_two.isVisible = !mViewModel.afterTasks.value.isNullOrEmpty()
         text_after.isVisible = !mViewModel.afterTasks.value.isNullOrEmpty()
     }
 

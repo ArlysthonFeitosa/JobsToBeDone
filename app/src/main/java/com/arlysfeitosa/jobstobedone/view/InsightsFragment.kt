@@ -15,6 +15,7 @@ import com.arlysfeitosa.jobstobedone.viewmodel.InsightsViewModel
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.fragment_insights.*
 
 class InsightsFragment : Fragment() {
@@ -63,10 +64,10 @@ class InsightsFragment : Fragment() {
         }
 
         val pieDataColors = listOf<Int>(
-            Color.rgb(4, 130, 67),
-            Color.rgb(50, 192, 132),
-            Color.rgb(86, 132, 174),
-            Color.rgb(0, 82, 73),
+            Color.rgb(86, 126, 156),
+            Color.rgb(116, 183, 232),
+            Color.rgb(232, 150, 68),
+            Color.rgb(162, 93, 232),
             Color.rgb(94, 160, 126),
             Color.rgb(66, 179, 149),
             Color.rgb(86, 252, 162),
@@ -74,8 +75,7 @@ class InsightsFragment : Fragment() {
             Color.rgb(15, 155, 142),
             Color.rgb(16, 122, 176),
             Color.rgb(16, 166, 116),
-            Color.rgb(123, 200, 246)
-        )
+            Color.rgb(123, 200, 246))
 
         val pieDataSet: PieDataSet = PieDataSet(pieEntry, "").apply {
             colors = pieDataColors
@@ -115,10 +115,10 @@ class InsightsFragment : Fragment() {
         }
 
         val pieDataColors = listOf<Int>(
-            Color.rgb(4, 130, 67),
-            Color.rgb(50, 192, 132),
-            Color.rgb(86, 132, 174),
-            Color.rgb(0, 82, 73),
+            Color.rgb(86, 126, 156),
+            Color.rgb(116, 183, 232),
+            Color.rgb(232, 150, 68),
+            Color.rgb(162, 93, 232),
             Color.rgb(94, 160, 126),
             Color.rgb(66, 179, 149),
             Color.rgb(86, 252, 162),
@@ -126,8 +126,7 @@ class InsightsFragment : Fragment() {
             Color.rgb(15, 155, 142),
             Color.rgb(16, 122, 176),
             Color.rgb(16, 166, 116),
-            Color.rgb(123, 200, 246)
-        )
+            Color.rgb(123, 200, 246))
 
         val pieDataSet: PieDataSet = PieDataSet(pieEntry, "").apply {
             colors = pieDataColors
@@ -167,10 +166,10 @@ class InsightsFragment : Fragment() {
         }
 
         val pieDataColors = listOf<Int>(
-            Color.rgb(4, 130, 67),
-            Color.rgb(50, 192, 132),
-            Color.rgb(86, 132, 174),
-            Color.rgb(0, 82, 73),
+            Color.rgb(86, 126, 156),
+            Color.rgb(116, 183, 232),
+            Color.rgb(232, 150, 68),
+            Color.rgb(162, 93, 232),
             Color.rgb(94, 160, 126),
             Color.rgb(66, 179, 149),
             Color.rgb(86, 252, 162),
@@ -178,8 +177,7 @@ class InsightsFragment : Fragment() {
             Color.rgb(15, 155, 142),
             Color.rgb(16, 122, 176),
             Color.rgb(16, 166, 116),
-            Color.rgb(123, 200, 246)
-        )
+            Color.rgb(123, 200, 246))
 
         val pieDataSet: PieDataSet = PieDataSet(pieEntry, "").apply {
             colors = pieDataColors

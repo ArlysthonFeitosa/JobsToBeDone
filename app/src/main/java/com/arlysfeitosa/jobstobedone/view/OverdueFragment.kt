@@ -106,7 +106,6 @@ class OverdueFragment : Fragment() {
         val recyclerOverdue = root.findViewById<RecyclerView>(R.id.recycler_overdue)
         recyclerOverdue.layoutManager = LinearLayoutManager(context)
         recyclerOverdue.adapter = mOverdueTaskAdapter
-        recyclerOverdue.isNestedScrollingEnabled = false
         mOverdueTaskAdapter.attachListener(mListener)
     }
 

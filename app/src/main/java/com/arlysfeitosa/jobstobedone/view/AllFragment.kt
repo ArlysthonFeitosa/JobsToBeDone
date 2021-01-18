@@ -105,7 +105,6 @@ class AllFragment : Fragment() {
         val recyclerAll = root.findViewById<RecyclerView>(R.id.recycler_all)
         recyclerAll.layoutManager = LinearLayoutManager(context)
         recyclerAll.adapter = mAllTasksAdapter
-        recyclerAll.isNestedScrollingEnabled = false
         mAllTasksAdapter.attachListener(mListener)
     }
 
