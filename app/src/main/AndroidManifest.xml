@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobsToBeDone">
+        <activity android:name=".view.SplashActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity android:name=".view.TaskFormActivity" />
         <activity android:name=".view.ProjectFormActivity" />
         <activity android:name=".view.ChooseCreateActivity" />
-        <activity android:name=".view.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".view.MainActivity"/>
     </application>
 
 </manifest>
