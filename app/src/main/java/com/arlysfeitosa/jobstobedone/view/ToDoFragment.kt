@@ -124,12 +124,9 @@ class ToDoFragment : Fragment() {
 
     private fun checkTasks() {
         text_today.isVisible = !mViewModel.todayTasks.value.isNullOrEmpty()
-        div_one.isVisible = !mViewModel.tomorrowTasks.value.isNullOrEmpty()
         text_tomorrow.isVisible = !mViewModel.tomorrowTasks.value.isNullOrEmpty()
-        div_two.isVisible = !mViewModel.afterTasks.value.isNullOrEmpty()
         text_after.isVisible = !mViewModel.afterTasks.value.isNullOrEmpty()
     }
-
 
     private fun observer() {
         mViewModel.todayTasks.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
@@ -147,5 +144,4 @@ class ToDoFragment : Fragment() {
             checkTasks()
         })
     }
-
 }

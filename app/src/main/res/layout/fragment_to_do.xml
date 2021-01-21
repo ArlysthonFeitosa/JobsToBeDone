@@ -34,16 +34,6 @@
             app:layout_constraintTop_toBottomOf="@id/text_today"
             tools:listitem="@layout/layout_task" />
 
-        <View
-            android:id="@+id/div_one"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/DarkBlueVariant"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_today"/>
-
         <TextView
             android:id="@+id/text_tomorrow"
             android:layout_width="wrap_content"
@@ -53,7 +43,7 @@
             android:textColor="@color/LightBlue"
             android:textSize="35sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/div_one"/>
+            app:layout_constraintTop_toBottomOf="@id/recycler_today"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_tomorrow"
@@ -65,16 +55,6 @@
             app:layout_constraintTop_toBottomOf="@id/text_tomorrow"
             tools:listitem="@layout/layout_task" />
 
-        <View
-            android:id="@+id/div_two"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/DarkBlueVariant"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_tomorrow"/>
-
         <TextView
             android:id="@+id/text_after"
             android:layout_width="wrap_content"
@@ -83,7 +63,7 @@
             android:textColor="@color/LightBlue"
             android:textSize="35sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/div_two" />
+            app:layout_constraintTop_toBottomOf="@id/recycler_tomorrow"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_after"
